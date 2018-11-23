@@ -1,0 +1,52 @@
+body {
+  font-family: 'PT Sans Narrow', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  background: #808080b2;
+}
+
+.container {
+  width: 85%;
+  overflow: hidden;
+  text-align: center;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 35px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.justify {
+  text-align: justify;
+}
+
+#grid li  {
+  list-style: none;
+  text-align: justify;
+  padding:20px;
+  border: #cccccc solid 1px;
+  margin-bottom:5px;
+  background:#fff5f5;
+}
+
+#grid h2 {
+  color: #1818a088;
+}
+
+.main {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+footer {
+  background: #333;
+  padding: 20px;
+}
