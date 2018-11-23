@@ -1,0 +1,18 @@
+body {
+  background: url("../img/showcase.jpg") no-repeat center/cover;
+  color: #fff;
+}
+
+.container h2 {
+  margin-top: 50px;
+  font-size: 30px;
+}
+
+.container p {
+  font-size: 20px;
+  text-align: justify;
+}
+
+footer {
+  margin-top: 50vh;
+}
