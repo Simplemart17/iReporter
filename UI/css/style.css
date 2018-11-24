@@ -2,17 +2,11 @@
   box-sizing: border-box;
 }
 
-/* CSS Variables */
-:root {
---primary-color: #b90415;
---primary-color-hover: #e44a5a;
---secondary-color: #103063;
---secondary-color-hover: #143f85;
---light-color: #f4f4f4;
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto|Rubik');
 
 body {
-  font-family: 'PT Sans Narrow', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Rubik', sans-serif;
   margin: 0;
   padding: 0;
   font-size: 15px;
@@ -65,7 +59,7 @@ a {
 }
 
 .text {
-  font-size: 25px;
+  font-size: 30px;
 }
 
 .text-light {
@@ -75,7 +69,7 @@ a {
 
 .section {
   background: url(../img/image\ 3.jpg) no-repeat bottom/cover;
-  color: #070606;
+  color: #000000;
   padding: 10% 0;
 }
 
@@ -90,13 +84,13 @@ section#wrapper {
   padding: 15px;
   color: #fff;
   display: inline-block;
-  background: var(--primary-color);
+  background: #b90415;;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .btn-register:hover {
-  color: var(--primary-color-hover);
+  color: #e44a5a;
 }
 
 
