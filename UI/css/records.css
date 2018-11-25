@@ -1,0 +1,233 @@
+* {
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto|Rubik');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  background: url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/confectionary.png") repeat;
+}
+
+.container  {
+  width: 95%;
+  overflow: hidden;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.row {
+  margin-top: 50px;
+}
+
+.row h1 {
+  font-size: 35px;
+  color: #d14f1cf8
+}
+
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.left, .right {
+width: 23%;
+background: rgba(107, 101, 101, 0.3);
+}
+
+.left {
+  margin: 0 10px 0 0;
+}
+
+.right {
+  margin: 0 0 0 10px;
+}
+
+.middle {
+width: 50%;
+background-color: rgba(107, 101, 101, 0.3);
+}
+
+#active_btn {
+  text-transform: uppercase;
+  background-color: #00aeff;
+}
+
+#box {
+  margin: 0 ;
+}
+
+.row #info {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.row #info p {
+  font-size: 20px;
+}
+
+.row #info p .small {
+  font-size: 15px;
+}
+
+#box h2 {
+  font-size: 30px;
+}
+
+#right-box {
+  margin-top: 35px;
+}
+
+button {
+  width: 60%;
+  height: 30px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background: #25364b;
+  border: none;
+  transition: all 0.5s;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.6s;
+}
+
+button:hover{
+  background-color: #3a7a7a
+}
+
+a:hover {
+  color: #ffee00f8;
+}
+
+#wrap-area {
+  width: 75%;
+  background-color: rgba(82, 138, 148, 0.9);
+  color: #ffffff;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+#wrap-area h3 {
+  font-size: 25px;
+  padding-top: 20px;
+}
+
+#wrap {
+  display: flex;
+  flex-direction: row;
+}
+
+#left {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  flex: 1;
+  font-size: 17px;
+  margin-left: 20px;
+}
+
+#right {
+  background-color: rgba(82, 167, 180, 0.37);
+  display: flex;
+  flex-direction: column;
+  font-size: 17px;
+  text-align: center;
+  flex: 1;
+}
+
+.action {
+  display: flex;
+  float: right;
+}
+
+.action p {
+  margin: 0 10px;
+}
+
+.action p a {
+  color: #0000ff;
+}
+
+#delete {
+  cursor: pointer;
+  color: #ff00dd;
+}
+
+#status.approved {
+  color: #008000;
+}
+
+#status.rejected {
+  color: #ff0000;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+h1 {
+  font-size: 30px;
+  margin-top: 30px;
+  text-align: center;
+  padding: 0px;
+}
+
+.center {
+  text-align: center;
+}
+
+.justify {
+  text-align: justify;
+}
+
+#grid li  {
+  list-style: none;
+  text-align: justify;
+  padding:20px 40px 20px 40px;
+  border: #cccccc solid 1px;
+  margin-bottom:5px;
+  background:#fff5f5;
+  margin: 0 30px 20px 0;
+}
+
+#grid h2 {
+  color: #1818a088;
+  text-align: left
+}
+
+footer {
+  background: #333;
+  padding: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  .column {
+    width: 100%;
+}
+
+.left, .right {
+  margin: 5px;
+  width: 100%;
+}
+
+  button {
+    width: 30%;
+  }
+}
