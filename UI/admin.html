@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="iReporter is an information channel for happenings around you"
+    />
+    <meta
+      name="keywords"
+      content="activities, reports, investigation, corruption"
+    />
+    <meta name="author" content="Martins Aloba" />
+    <title>iReporter</title>
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body id="main">
+    <div class="nav">
+      <div class="nav-center">
+        <div class="nav-header">
+          <div class="nav-title">
+            <a href="index.html"><img src="img/logo.png"/></a>
+          </div>
+        </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span> <span></span> <span></span>
+          </label>
+        </div>
+        <input type="checkbox" id="nav-check" />
+        <div class="nav-links">
+          <a href="#" id="active">Admin</a> <a href="index.html">Logout</a>
+        </div>
+      </div>
+    </div>
+    <!-- Main Section -->
+    <h2>WELCOME TO ADMIN DASHBOARD</h2>
+    <section id="main" class="container">
+      <div id="wrap">
+        <div>
+          <a href="#record"
+            ><input id="record-btn" type="button" value="All Records"
+          /></a>
+        </div>
+        <table id="entry-table">
+          <tr>
+            <th>Username</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Report Type</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            <td>simplemart17</td>
+            <td>Dancing Monkey</td>
+            <td>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
+              quibusdam quae consectetur modi, animi maxime deleniti cumque quos
+              vel numquam vero laborum totam dolorem cupiditate perferendis
+              veritatis. Voluptatum, ut accusamus.
+            </td>
+            <td>Red Flag</td>
+            <td>
+              <select id="action">
+                <option value="select" selected>Select</option>
+                <option value="approve">APPROVE</option>
+                <option value="reject">REJECT</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>jacksonnille</td>
+            <td>Crocodile Smiles</td>
+            <td>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima
+              vel dignissimos alias harum suscipit itaque quisquam autem
+              reiciendis, libero porro voluptatum sint possimus, quam fugiat
+              saepe quasi pariatur rem vitae fugit amet dolore, vero cum optio.
+              Temporibus assumenda nihil alias suscipit veritatis quaerat dolor,
+              veniam iure porro ipsam beatae aliquid?
+            </td>
+            <td>Intervention</td>
+            <td>
+              <select id="action">
+                <option value="select" selected>Select</option>
+                <option value="approve">APPROVE</option>
+                <option value="reject">REJECT</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>jaydee</td>
+            <td>Snake Swallow Dollars</td>
+            <td>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae,
+              repellendus cum nesciunt ab ratione similique, obcaecati nam
+              facilis totam possimus debitis. Eum, vero aliquid cum quisquam
+              perspiciatis enim, natus facilis odit asperiores aliquam similique
+              omnis maiores sit quibusdam. Nam, accusamus officia, magni
+              deleniti amet exercitationem quidem odit, laboriosam corrupti quas
+              perferendis maxime ad fugit? Magnam neque nesciunt dolores. Dicta
+              cum, ad aut hic autem ipsa architecto possimus inventore neque
+              harum laboriosam numquam ullam doloremque, pariatur omnis
+              distinctio ipsam soluta nulla recusandae saepe minus quas sapiente
+              earum non. Ipsa animi porro ea in ex. Molestiae inventore dolore
+              fugiat unde, ea tempore!
+              <div><img src="img/image 1.jpeg" id="img" /></div>
+              <div><img src="img/image 2.jpg" id="img" /></div>
+              <div><img src="img/image 2.jpg" id="img" /></div>
+            </td>
+            <td>Red Flag</td>
+            <td>
+              <select id="action">
+                <option value="select" selected>Select</option>
+                <option value="approve">APPROVE</option>
+                <option value="reject">REJECT</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+
+        <div><button id="update-btn">Update</button></div>
+      </div>
+    </section>
+
+    <!-- Records Section -->
+    <section id="record">
+      <div id="wrap">
+        <div><h2>All Users Record</h2></div>
+        <div>
+          <table id="record-table">
+            <tr>
+              <th>Username</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Report Type</th>
+              <th>Action</th>
+            </tr>
+            <tr>
+              <td>simplemart17</td>
+              <td>Dancing Monkey</td>
+              <td>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
+                quibusdam quae consectetur modi, animi maxime deleniti cumque
+                quos vel numquam vero laborum totam dolorem cupiditate
+                perferendis veritatis. Voluptatum, ut accusamus.
+              </td>
+              <td>Red Flag</td>
+              <td>APPROVED</td>
+            </tr>
+            <tr>
+              <td>simplemart17</td>
+              <td>Dancing Monkey</td>
+              <td>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
+                quibusdam quae consectetur modi, animi maxime deleniti cumque
+                quos vel numquam vero laborum totam dolorem cupiditate
+                perferendis veritatis. Voluptatum, ut accusamus.
+              </td>
+              <td>Red Flag</td>
+              <td>APPROVED</td>
+            </tr>
+            <tr>
+              <td>jaydee</td>
+              <td>Snake Swallow Dollars</td>
+              <td>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae,
+                repellendus cum nesciunt ab ratione similique, obcaecati nam
+                facilis totam possimus debitis. Eum, vero aliquid cum quisquam
+                perspiciatis enim, natus facilis odit asperiores aliquam
+                similique omnis maiores sit quibusdam. Nam, accusamus officia,
+                magni deleniti amet exercitationem quidem odit, laboriosam
+                corrupti quas perferendis maxime ad fugit? Magnam neque nesciunt
+                dolores. Dicta cum, ad aut hic autem ipsa architecto possimus
+                inventore neque harum laboriosam numquam ullam doloremque,
+                pariatur omnis distinctio ipsam soluta nulla recusandae saepe
+                minus quas sapiente earum non. Ipsa animi porro ea in ex.
+                Molestiae inventore dolore fugiat unde, ea tempore!
+                <div><img src="img/image 1.jpeg" id="img" /></div>
+                <div><img src="img/image 2.jpg" id="img" /></div>
+                <div><img src="img/image 2.jpg" id="img" /></div>
+              </td>
+              <td>Red Flag</td>
+              <td>APPROVED</td>
+            </tr>
+            <tr>
+              <td>simplemart17</td>
+              <td>Dancing Monkey</td>
+              <td>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
+                quibusdam quae consectetur modi, animi maxime deleniti cumque
+                quos vel numquam vero laborum totam dolorem cupiditate
+                perferendis veritatis. Voluptatum, ut accusamus.
+              </td>
+              <td>Red Flag</td>
+              <td>APPROVED</td>
+            </tr>
+            <tr>
+              <td>jacksonnille</td>
+              <td>Crocodile Smiles</td>
+              <td>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima
+                vel dignissimos alias harum suscipit itaque quisquam autem
+                reiciendis, libero porro voluptatum sint possimus, quam fugiat
+                saepe quasi pariatur rem vitae fugit amet dolore, vero cum
+                optio. Temporibus assumenda nihil alias suscipit veritatis
+                quaerat dolor, veniam iure porro ipsam beatae aliquid?
+              </td>
+              <td>Intervention</td>
+              <td>REJECTED</td>
+            </tr>
+            <tr>
+              <td>jaydee</td>
+              <td>Snake Swallow Dollars</td>
+              <td>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae,
+                repellendus cum nesciunt ab ratione similique, obcaecati nam
+                facilis totam possimus debitis. Eum, vero aliquid cum quisquam
+                perspiciatis enim, natus facilis odit asperiores aliquam
+                similique omnis maiores sit quibusdam. Nam, accusamus officia,
+                magni deleniti amet exercitationem quidem odit, laboriosam
+                corrupti quas perferendis maxime ad fugit? Magnam neque nesciunt
+                dolores. Dicta cum, ad aut hic autem ipsa architecto possimus
+                inventore neque harum laboriosam numquam ullam doloremque,
+                pariatur omnis distinctio ipsam soluta nulla recusandae saepe
+                minus quas sapiente earum non. Ipsa animi porro ea in ex.
+                Molestiae inventore dolore fugiat unde, ea tempore!
+                <div><img src="img/image 1.jpeg" id="img" /></div>
+                <div><img src="img/image 2.jpg" id="img" /></div>
+                <div><img src="img/image 2.jpg" id="img" /></div>
+              </td>
+              <td>Red Flag</td>
+              <td>APPROVED</td>
+            </tr>
+          </table>
+
+          <div>
+            <a href="#main"><button id="dashboard-btn">Dashboard</button></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer><div class="footer">Copyright &copy; 2018 iReporter</div></footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>
