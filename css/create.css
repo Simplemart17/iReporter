@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto|Rubik');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Rubik', sans-serif;
+  margin-top: 50px;
+  padding: 0;
+  font-size:16px;
+  line-height: 1.5;
+  background-color: rgba(82, 167, 180, 0.37);
+  color: #fff;
+  overflow: auto;
+}
+
+.logo img {
+  display: flex;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.container {
+  border-radius: 5px;
+  background: rgba(107, 101, 101, 0.3);
+  width: 70%;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+h2 {
+  margin: 0;
+  text-align: center;
+  font-size: 30px;
+}
+
+input[type=text], input[type=url], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  resize: vertical;
+}
+
+select#report-type {
+  font-size: 16px;
+}
+
+input[type=file] {
+  font-size: 16px;
+  margin-top: 6px;
+}
+
+textarea {
+  height: 200px;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+#submit-btn, #cancel-btn {
+  width: 90px;
+  height: 35px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: all 0.5s;
+}
+
+#submit-btn {
+  border-radius: 1.5px;
+  background-color: #4caf50;
+  margin-left: 40%;
+}
+
+#submit-btn:hover {
+  background-color: #378b3b;
+}
+
+#cancel-btn {
+  border-radius: 1.5px;
+  background: #ff0000;
+  margin-left: 5%;
+}
+
+#cancel-btn:hover {
+  background-color: #df2929;
+}
+
+.left {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.right {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.footer {
+  background: #333;
+  text-align: center;
+  font-size: 15px;
+  max-width: 100%;
+  margin-top: 25px;
+  padding: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .left, .right {
+      width: 100%;
+      margin-top: 0;
+  }
+}
+
