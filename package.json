@@ -1,0 +1,30 @@
+{
+  "name": "ireporter",
+  "version": "1.0.0",
+  "description": "This is a platform to bring to notice any form of corruption, and also report on things that needs government intervention",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Simplemart17/iReporter.git"
+  },
+  "keywords": [
+    "reports",
+    "corruption",
+    "project"
+  ],
+  "author": "Martins Aloba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Simplemart17/iReporter/issues"
+  },
+  "homepage": "https://github.com/Simplemart17/iReporter#readme",
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}
