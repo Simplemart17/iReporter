@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/Simplemart17/iReporter/badge.svg?branch=develop)](https://coveralls.io/github/Simplemart17/iReporter?branch=develop)
+
 # iReporter
 This is an Andela Bootcamp Project, a Developer Challenge called iReporter
 
