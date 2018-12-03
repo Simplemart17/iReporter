@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/Simplemart17/iReporter.svg?branch=develop)](https://travis-ci.com/Simplemart17/iReporter)
 [![Coverage Status](https://coveralls.io/repos/github/Simplemart17/iReporter/badge.svg?branch=develop)](https://coveralls.io/github/Simplemart17/iReporter?branch=develop)
 
 # iReporter
