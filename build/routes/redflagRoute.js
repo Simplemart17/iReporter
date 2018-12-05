@@ -22,7 +22,9 @@ router.get("/red-flags/:id", _red_flags2.default.getRedflag);
 
 router.post("/red-flags", _red_flags2.default.createRedflag);
 
-router.patch("/red-flags/:id", _red_flags2.default.updateRedflag);
+router.patch("/red-flags/:id/comment", _red_flags2.default.updateRedflagComment);
+
+router.patch("/red-flags/:id/location", _red_flags2.default.updateRedflagLocation);
 
 router.delete("/red-flags/:id", _red_flags2.default.deleteRedflag);
 

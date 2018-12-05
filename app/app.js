@@ -11,7 +11,7 @@ const app = express();
 const port = (process.env.PORT || 3000);
 
 app.set("appData", dbase);
-app.set("appVersion", "/api/v1");
+app.set("appVersion", "/api/v1/record");
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,3 +22,6 @@ app.get("*", (req, res) => {
 
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
+
+
+export default app;

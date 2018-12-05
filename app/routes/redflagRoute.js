@@ -9,7 +9,9 @@ router.get("/red-flags/:id", redFlags.getRedflag);
 
 router.post("/red-flags", redFlags.createRedflag);
 
-router.patch("/red-flags/:id", redFlags.updateRedflag);
+router.patch("/red-flags/:id/comment", redFlags.updateRedflagComment);
+
+router.patch("/red-flags/:id/location", redFlags.updateRedflagLocation);
 
 router.delete("/red-flags/:id", redFlags.deleteRedflag);
 

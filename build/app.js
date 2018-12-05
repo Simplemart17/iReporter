@@ -1,5 +1,9 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _express = require("express");
 
 var _express2 = _interopRequireDefault(_express);
@@ -27,7 +31,7 @@ var app = (0, _express2.default)();
 var port = process.env.PORT || 3000;
 
 app.set("appData", _dbase2.default);
-app.set("appVersion", "/api/v1");
+app.set("appVersion", "/api/v1/record");
 app.use((0, _cors2.default)());
 app.use(_bodyParser2.default.json());
 app.use(_bodyParser2.default.urlencoded({ extended: true }));
@@ -39,4 +43,6 @@ app.get("*", function (req, res) {
 app.listen(port, function () {
 	return console.log("Server started on port " + port);
 });
+
+exports.default = app;
 //# sourceMappingURL=app.js.map
