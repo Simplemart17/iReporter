@@ -94,7 +94,7 @@ class RedflagController {
       dbase.splice(itemIndex, 1, newData);
   
       return res.status(201).json({
-      message: "Red-flag record was updated successfully",
+      message: "Red-flag comment  was updated successfully",
       status: 201,
       newData,
       });
@@ -137,7 +137,7 @@ class RedflagController {
       dbase.splice(itemIndex, 1, newData);
   
       return res.status(201).json({
-      message: "Red-flag record was updated successfully",
+      message: "Red-flag location was updated successfully",
       status: 201,
       newData,
       });
