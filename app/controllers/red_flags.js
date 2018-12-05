@@ -12,7 +12,7 @@ class RedflagController {
     const id = parseInt(req.params.id, 10);
     dbase.map((data) => {
       if (data.id === id) {
-        return res.status(200).json ({ message: "Red-flag record retrieved successfully",
+        return res.status(200).json({ message: "Red-flag record retrieved successfully",
           status: 200,
           data,
         });
@@ -46,6 +46,8 @@ class RedflagController {
       title: req.body.title,
       type: req.body.type,
       location: req.body.location,
+      Images: req.body.Images,
+      Videos: req.body.Videos,
       comment: req.body.comment,
       };
       dbase.push(data);
@@ -56,7 +58,50 @@ class RedflagController {
     }    
   }
   
-  updateRedflag (req, res) {
+  updateRedflagComment (req, res) {
+    const id = parseInt(req.params.id, 10);
+    let foundDbase;
+    let itemIndex;
+    dbase.map((data, index) => {
+      if (data.id === id) {
+        foundDbase = data;
+        itemIndex = index;
+      }
+    });
+  
+    if (!foundDbase) {
+      return res.status(404).json({ error: "The record is not found!",
+        status: 404,
+      });
+    }
+  
+    if (!req.body.comment) {
+      return res.status(400).json({
+        error: "This field is required",
+        status: 400,
+      });
+    } else {
+      const newData = {
+      id: foundDbase.id,
+      title: foundDbase.title,
+      type: foundDbase.type,
+      location: foundDbase.location,
+      Images: req.body.Images,
+      Videos: req.body.Videos,
+      comment: req.body.comment || foundDbase.comment,
+      };
+  
+      dbase.splice(itemIndex, 1, newData);
+  
+      return res.status(201).json({
+      message: "Red-flag record was updated successfully",
+      status: 201,
+      newData,
+      });
+    }
+  }
+
+  updateRedflagLocation (req, res) {
     const id = parseInt(req.params.id, 10);
     let foundDbase;
     let itemIndex;
@@ -75,19 +120,18 @@ class RedflagController {
   
     if (!req.body.location) {
       return res.status(400).json({
-        error: "location is required",
-        status: 400,
-      });
-    } else if (!req.body.comment) {
-      return res.status(400).json({
-        error: "comment is required",
+        error: "location field is required",
         status: 400,
       });
     } else {
       const newData = {
       id: foundDbase.id,
+      title: foundDbase.title,
+      type: foundDbase.type,
       location: req.body.location || foundDbase.location,
-      comment: req.body.comment || foundDbase.comment,
+      Images: req.body.Images,
+      Videos: req.body.Videos,
+      comment: foundDbase.comment,
       };
   
       dbase.splice(itemIndex, 1, newData);
@@ -97,7 +141,7 @@ class RedflagController {
       status: 201,
       newData,
       });
-    }    
+    }
   }
   
   deleteRedflag (req, res) {

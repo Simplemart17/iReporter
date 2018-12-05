@@ -8,7 +8,10 @@ const data = [
     type: "red-flag",
     location: "180, 190",
     status: "resolved",
+    Images: ["./img.background", "Image 2"],
+    Video: ["Image", "Image"],
     comment: "This is the story"
+    
   }
 ];
 

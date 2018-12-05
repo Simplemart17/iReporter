@@ -47,19 +47,19 @@ var RedflagController = function () {
     key: "createRedflag",
     value: function createRedflag(req, res) {
       if (!req.body.title) {
-        return res.status(422).json({ error: "All fields are required!",
+        return res.status(422).json({ error: "Title field is required!",
           status: 422
         });
       } else if (!req.body.type) {
-        return res.status(422).json({ error: "All fields are required!",
+        return res.status(422).json({ error: "Type field is required!",
           status: 422
         });
       } else if (!req.body.location) {
-        return res.status(422).json({ error: "All fields are required!",
+        return res.status(422).json({ error: "Location field is required!",
           status: 422
         });
       } else if (!req.body.comment) {
-        return res.status(422).json({ error: "All fields are required!",
+        return res.status(422).json({ error: "Comment field is required!",
           status: 422
         });
       } else {
@@ -68,6 +68,8 @@ var RedflagController = function () {
           title: req.body.title,
           type: req.body.type,
           location: req.body.location,
+          Images: req.body.Images,
+          Videos: req.body.Videos,
           comment: req.body.comment
         };
         _dbase2.default.push(data);
@@ -78,8 +80,52 @@ var RedflagController = function () {
       }
     }
   }, {
-    key: "updateRedflag",
-    value: function updateRedflag(req, res) {
+    key: "updateRedflagComment",
+    value: function updateRedflagComment(req, res) {
+      var id = parseInt(req.params.id, 10);
+      var foundDbase = void 0;
+      var itemIndex = void 0;
+      _dbase2.default.map(function (data, index) {
+        if (data.id === id) {
+          foundDbase = data;
+          itemIndex = index;
+        }
+      });
+
+      if (!foundDbase) {
+        return res.status(404).json({ error: "The record is not found!",
+          status: 404
+        });
+      }
+
+      if (!req.body.comment) {
+        return res.status(400).json({
+          error: "This field is required",
+          status: 400
+        });
+      } else {
+        var newData = {
+          id: foundDbase.id,
+          title: foundDbase.title,
+          type: foundDbase.type,
+          location: foundDbase.location,
+          Images: req.body.Images,
+          Videos: req.body.Videos,
+          comment: req.body.comment || foundDbase.comment
+        };
+
+        _dbase2.default.splice(itemIndex, 1, newData);
+
+        return res.status(201).json({
+          message: "Red-flag record was updated successfully",
+          status: 201,
+          newData: newData
+        });
+      }
+    }
+  }, {
+    key: "updateRedflagLocation",
+    value: function updateRedflagLocation(req, res) {
       var id = parseInt(req.params.id, 10);
       var foundDbase = void 0;
       var itemIndex = void 0;
@@ -98,19 +144,18 @@ var RedflagController = function () {
 
       if (!req.body.location) {
         return res.status(400).json({
-          error: "location is required",
-          status: 400
-        });
-      } else if (!req.body.comment) {
-        return res.status(400).json({
-          error: "comment is required",
+          error: "location field is required",
           status: 400
         });
       } else {
         var newData = {
           id: foundDbase.id,
+          title: foundDbase.title,
+          type: foundDbase.type,
           location: req.body.location || foundDbase.location,
-          comment: req.body.comment || foundDbase.comment
+          Images: req.body.Images,
+          Videos: req.body.Videos,
+          comment: foundDbase.comment
         };
 
         _dbase2.default.splice(itemIndex, 1, newData);
