@@ -8,3 +8,86 @@ This is an Andela Bootcamp Project, a Developer Challenge called iReporter
 iReporter is a platform which enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public.
 
 It can also be used to report on things that needs government intervention.
+
+
+# The API Endpoints Documentation
+
+**URL**
+
+/api/v1/record/red-flags
+
+**Method:**
+
+`GET/`
+
+`POST/`
+
+`PATCH/`
+
+`DELETE/`
+
+**URL Params**
+
+`id=[integer]`
+
+**Data Params**
+
+_When making a POST request, the payload should be_
+
+  {
+    
+    "createdBy": "String",
+    
+    "type": "String",
+    
+    "location": "String",
+    
+    "Images": [Image, Image ],
+    
+    "Video": [Image, Image],
+    
+    "comment": "String"
+  }
+  
+  **Success Response:**
+  
+  `message: "Red-flag record added successfully"`
+  
+  `code: 201`
+  
+  `Data: [{ }]`
+  
+  **Error Response:**
+  
+  `message: "All fields required"`
+  
+  `code: 404`
+  
+  _When making a PATCH request_
+  
+ ` URL Params`
+ 
+  `/:id/location`
+  
+ `/:id/comment`
+  
+  **Success Response:**
+  
+ `message: "Red-flag location/comment updated successfully"`
+ 
+  `code: 201`
+  
+  `Data: [{ }]`
+  
+  **Error Response:**
+  
+  `message: "The record is not found"`
+  
+  `code: 404`
+  
+  `message: "The field is required"`
+  
+  `code: 400`
+  
+
+
