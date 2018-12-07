@@ -6,15 +6,12 @@ install:
 cache:
   directories:
     - "node_modules"
-after_success:
-  - npm install coveralls
-  - npm run coveralls
 
 env:
   global:
     - CC_TEST_REPORTER_ID=d91e82f9734cc9e588b7dcad24ef53ac6f9d9a75333c2b5c1d54c2444035adb0
     
-    before_script:
+before_script:
   - yarn global add nyc
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
