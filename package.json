@@ -10,7 +10,8 @@
     "start": "node ./build/app",
     "heroku-postbuild": "npm run build",
     "coverage": "nyc npm test && nyc report --reporter=lcov --reporter=text --reporter=lcovonly || coveralls",
-    "local": "nyc --reporter=text --reporter=html mocha ./app/tests/test.js --require babel-polyfill --require babel-register --exit"
+    "local": "nyc --reporter=text --reporter=html mocha ./app/tests/test.js --require babel-polyfill --require babel-register --exit",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
