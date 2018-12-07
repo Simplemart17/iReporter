@@ -1,8 +1,6 @@
 .nav {
-  background: #033858;
+  background-color: #333;
   color: #fff;
-  min-height: 0px;
-  border-bottom: #dfac2c 3px solid;
   position: relative;
   width: 100%;
   height: 60px;
@@ -37,12 +35,12 @@
   display: inline-block;
   padding: 12px 24px;
   text-decoration: none;
-  color: #efefef;
+  color: #fff;
 }
 
 .nav .nav-center .nav-links a:hover {
-  color: #dfac2c;
-  transition: 0.8s;
+  color: #dcdde9;
+  transition: 0.5s;
 }
 
 .nav .nav-center #nav-check {
@@ -55,8 +53,7 @@
 }
 
 #active {
-  color: #e8491d;
-  text-transform: uppercase;
+  font-weight: bold;
 }
 
 @media (max-width: 830px) {

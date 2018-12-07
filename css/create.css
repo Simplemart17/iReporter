@@ -7,19 +7,13 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-family: 'Rubik', sans-serif;
-  margin-top: 50px;
   padding: 0;
+  margin: 0px;
   font-size:16px;
   line-height: 1.5;
-  background-color: rgba(82, 167, 180, 0.37);
-  color: #fff;
+  background: url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/confectionary.png") repeat;
+  color: rgb(10, 10, 10);
   overflow: auto;
-}
-
-.logo img {
-  display: flex;
-  width: 200px;
-  margin: 0 auto;
 }
 
 .container {
@@ -85,12 +79,12 @@ label {
 
 #cancel-btn {
   border-radius: 1.5px;
-  background: #ff0000;
+  background: #2b2929;
   margin-left: 5%;
 }
 
 #cancel-btn:hover {
-  background-color: #df2929;
+  background-color: #5c5757;
 }
 
 .left {
@@ -114,16 +108,20 @@ label {
 .footer {
   background: #333;
   text-align: center;
-  font-size: 15px;
+  font-size: 17px;
   max-width: 100%;
   margin-top: 25px;
   padding: 20px;
+  color: #fff;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .left, .right {
       width: 100%;
       margin-top: 0;
+  }
+  .container {
+    width: 100%;
   }
 }
 

@@ -41,7 +41,7 @@ body {
 
 .left, .right {
 width: 23%;
-background: rgba(107, 101, 101, 0.3);
+background: rgba(107, 101, 101, 0.2);
 }
 
 .left {
@@ -55,11 +55,7 @@ background: rgba(107, 101, 101, 0.3);
 .middle {
 width: 50%;
 background-color: rgba(107, 101, 101, 0.3);
-}
-
-#active_btn {
-  text-transform: uppercase;
-  background-color: #00aeff;
+margin-bottom: 20px;
 }
 
 #box {
@@ -72,16 +68,14 @@ background-color: rgba(107, 101, 101, 0.3);
 }
 
 .row #info p {
-  font-size: 20px;
+  font-size: 16px;
 }
 
-.row #info p .small {
-  font-size: 15px;
+.title {
+  font-weight: bold;
+    text-decoration: underline;
 }
 
-#box h2 {
-  font-size: 30px;
-}
 
 #right-box {
   margin-top: 35px;
@@ -98,37 +92,17 @@ button {
   transition: all 0.5s;
 }
 
+
 a {
   text-decoration: none;
   color: #fff;
   transition: all 0.6s;
 }
 
-button:hover{
-  background-color: #3a7a7a
-}
-
 a:hover {
-  color: #ffee00f8;
+  font-weight: bold;
 }
 
-#wrap-area {
-  width: 75%;
-  background-color: rgba(82, 138, 148, 0.9);
-  color: #ffffff;
-  margin: 0 auto;
-  margin-top: 40px;
-}
-
-#wrap-area h3 {
-  font-size: 25px;
-  padding-top: 20px;
-}
-
-#wrap {
-  display: flex;
-  flex-direction: row;
-}
 
 #left {
   display: flex;
@@ -137,15 +111,6 @@ a:hover {
   flex: 1;
   font-size: 17px;
   margin-left: 20px;
-}
-
-#right {
-  background-color: rgba(82, 167, 180, 0.37);
-  display: flex;
-  flex-direction: column;
-  font-size: 17px;
-  text-align: center;
-  flex: 1;
 }
 
 .action {
@@ -163,7 +128,7 @@ a:hover {
 
 #delete {
   cursor: pointer;
-  color: #ff00dd;
+  color: #ff0000;
 }
 
 #status.approved {
@@ -207,6 +172,55 @@ h1 {
   margin: 0 30px 20px 0;
 }
 
+
+/* modal creation  */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content{
+    background-color: #f4f4f4;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    height: 90%;
+    overflow: auto;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    animation-name: modalpost;
+    animation-duration: .5s;
+}
+
+.modalBtn{
+    width: 20%;
+    color: #001cbb;
+    border: none;
+    padding: 0;
+    background-color: #ffffff;
+}
+.closeBtn{
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+}
+.closeBtn:hover, .closeBtn:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes modalpost{
+    from{opacity: 0}
+    to{opacity: 1}
+}
+
 #grid h2 {
   color: #1818a088;
   text-align: left
@@ -214,7 +228,9 @@ h1 {
 
 footer {
   background: #333;
-  padding: 20px;
+  padding: 20px;;
+  color: #f4f4f4;
+  font-size: 17px;
 }
 
 @media screen and (max-width: 700px) {
@@ -230,4 +246,15 @@ footer {
   button {
     width: 30%;
   }
+  .modal-content{
+    background-color: #f4f4f4;
+    margin: 10% auto;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    animation-name: modalpost;
+    animation-duration: .5s;
+}
 }
