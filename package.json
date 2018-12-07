@@ -9,21 +9,8 @@
     "build": "rm -rf build && mkdir build && babel -d ./build ./app -s",
     "start": "node ./build/app",
     "heroku-postbuild": "npm run build",
-    "coveralls": "nyc npm test && nyc report --reporter=lcov --reporter=text --reporter=lcovonly || coveralls"
-  },
-  "nyc": {
-    "exclude": [
-      "**/controllers/**"
-    ],
-    "require": [
-      "babel-register"
-    ],
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "sourceMap": false,
-    "instrument": false
+    "coverage": "nyc npm test && nyc report --reporter=lcov --reporter=text --reporter=lcovonly || coveralls",
+    "local": "nyc --reporter=text --reporter=html mocha ./app/tests/test.js --require babel-polyfill --require babel-register --exit"
   },
   "repository": {
     "type": "git",
