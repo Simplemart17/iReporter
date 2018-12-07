@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Roboto|Rubik');
 
 body {
@@ -5,147 +9,117 @@ body {
   font-family: 'Rubik', sans-serif;
   margin: 0;
   padding: 0;
-  font-size: 15px;
+  font-size:17px;
   line-height: 1.5;
-  background: url(../img/image\ 2.jpg) no-repeat center/cover;
-  color: #fff;
+  color: #000000;
+  overflow: auto;
 }
 
 .container {
-  display: grid;
-  padding: 0;
-  align-items: center;
-}
-
-.container h2 {
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.container .logo {
-  margin: auto;
-  align-items: center;
-}
-
-img {
-  width: 150px;
-  margin-top: 15px;
-  margin-bottom: 10px;
-}
-
-.box {
-  display: flex;
-  float: right;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 20%;
-}
-
-
-.signup {
-  background: rgba(107, 101, 101, 0.3);
-  display: grid;
-  justify-content: center;
-  align-items: center;
+  border-radius: 5px;
+  background: rgba(107, 101, 101, 0.4);
   width: 50%;
+  padding: 0 30px 10px;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.signup form {
-  width: 100%;
-  padding-bottom: 5px;
-  line-height: 1.2;
+h2 {
+  margin: 0;
+  text-align: center;
+  font-size: 30px;
 }
 
-.signup label {
-  font-size: 16px;
+input[type=text], input[type=email], input {
+  width: 95%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  resize: vertical;
 }
 
-.signup input {
-  margin-bottom: 5px;
-  width: 100%;
-  border-radius: 1.5px;
-  background: #fff;
-  border: none;
-  color: #0e0d0d;
-  height: 25px;
+
+
+label {
+  padding: 10px;
+   text-align: left;
+  display: inline-block;
 }
 
 #signup-btn, #cancel-btn {
-  width: 90px;
-  height: 25px;
-  margin: 2px 20px 2px 30px;
-  cursor: pointer;
-}
-
-.signup .links a {
+  width: 140px;
+  height: 35px;
+  border: none;
   color: #fff;
-  text-decoration: underline;
-  text-align: center;
-  font-size: 15px;
-  margin-left: 40px;
-}
-
-.signup .links a:hover {
-  color: #ff7b39;
-}
-
-
-.footer {
-  color: #131212;
-  text-align: center;
-  font-size: 15px;
-  max-width: 100%;
-  padding-top: 10px;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: all 0.3s;
+justify-content: center;
 }
 
 #signup-btn {
-  padding: 5px 10px;
-  height: 35px;
-  border: 0;
   border-radius: 1.5px;
-  background: #a7761d;
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.5s;
+  background-color: dodgerblue;
+  
 }
 
 #signup-btn:hover {
-  background: #ff7b39;
+  background-color: steelblue;
 }
 
 #cancel-btn {
-  padding: 5px 10px;
-  height: 35px;
-  border: none;
   border-radius: 1.5px;
-  background: #ff0000;
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.5s;
+  background: #d83737;
+  margin-left: 5%;
 }
 
 #cancel-btn:hover {
-  background-color: #ff4639;
-  color: #fff;  
+  background-color: #cf9e9e;
+}
+.links a {
+    font-weight: bold;
+    font-size: 16;
+    font-style: italic;
+    
 }
 
-@media (min-width: 0px) and (max-width: 599px) {
-  .signup {
+.left {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.right {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.footer {
+  background: #333;
+  text-align: center;
+  font-size: 17px;
+  max-width: 100%;
+  padding-top: 10px;
+  padding: 20px;
+  color: #ffff;
+}
+
+@media screen and (max-width: 600px) {
+  .left, .right {
+      width: 100%;
+      margin-top: 0;
+  }
+  .container {
     width: 100%;
   }
-  .signup form {
-    width: 100%;
-  }
-
 }
 
-@media (min-width: 599px) and (max-width: 900px) {
-  .signup {
-    width: 90%;
-  }
-}
