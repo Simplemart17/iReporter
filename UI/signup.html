@@ -14,57 +14,86 @@
     />
     <meta name="author" content="Martins Aloba" />
     <title>Register || iReporter</title>
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/signup.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="logo">
-        <a href="index.html"><img src="img/logo.png"/></a>
+    <div class="nav">
+      <div class="nav-center">
+        <div class="nav-header">
+          <div class="nav-title">
+            <a href="index.html"><img src="img/reporter-red.png"/></a>
+          </div>
+        </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span> <span></span> <span></span>
+          </label>
+        </div>
+        <input type="checkbox" id="nav-check" />
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="signin.html">Sign In</a>
+        </div>
       </div>
+    </div>
+    <div class="container">
       <div class="box">
         <h2>Create An Account</h2>
         <div class="signup">
           <form>
             <p id="error_message"></p>
-            <p id="success_message"></p>
-            <div>
-              <label>Firstname</label>
-              <input
+            <p id="success_message"></p>  
+          
+            <div class="row">
+              <label class="left">Firstname</label>
+              <div class="right">
+                <input
                 type="text"
                 required="true"
                 id="signup_firstname"
                 autocomplete="name"
               />
             </div>
-            <div>
-              <label>Lastname</label>
-              <input
+            </div>
+            <div class="row">
+              <label class="left">Lastname</label>
+              <div class="right">
+                <input
                 type="text"
                 required="true"
                 id="signup_lastname"
                 autocomplete="name"
               />
             </div>
-            <div>
-              <label>Othername</label>
-              <input
+            </div>
+            <div class="row">
+              <label class="left">Othername</label>
+              <div class="right">
+                <input
                 type="text"
                 required="true"
                 id="signup_othername"
                 autocomplete="name"
               />
+            </div>      
             </div>
-            <div>
-              <label>Email Address</label>
-              <input
+              <div class="row">
+              <label class="left">Email Address</label>
+              <div class="right">
+                <input
                 type="email"
                 required="true"
                 id="signup_email"
                 autocomplete="email"
               />
+            </div>      
             </div>
-            <div>
-              <label>Phone Number</label>
+           
+            <div class="row">
+              <label class="left">Phone Number</label>
+                <div class="right">
               <input
                 type="number"
                 required="true"
@@ -72,17 +101,21 @@
                 autocomplete="mobile"
               />
             </div>
-            <div>
-              <label>Username</label>
+            </div>
+            <div class="row">
+              <label class="left">Username</label>
+                <div class="right">
               <input
                 type="text/number"
                 required="true"
                 id="signup_username"
                 autocomplete="username"
               />
+            </div>        
             </div>
-            <div>
-              <label>Password</label>
+            <div class="row">
+              <label class="left">Password</label>
+                <div class="right">
               <input
                 type="password"
                 required="true"
@@ -90,8 +123,10 @@
                 autocomplete="password"
               />
             </div>
-            <div>
-              <label>Confirm Password</label>
+            </div>
+            <div class="row">
+              <label class="left">Confirm Password</label>
+                <div class="right">
               <input
                 type="password"
                 required="true"
@@ -99,22 +134,23 @@
                 autocomplete="password"
               />
             </div>
+            </div>
             <div>
               <button type="submit" id="signup-btn">Sign up</button>
               <button type="submit" id="cancel-btn">Cancel</button>
             </div>
           </form>
           <div class="links">
-            <a href="reset.html">Forgot Password?</a>
-            <a href="signin.html">Signin</a>
+              <p>Already have an account?
+            <a href="signin.html">Signin</a></p>
           </div>
         </div>
-        <footer class="footer">
-          <div>Copyright &copy; 2018 iReporter</div>
-        </footer>
+        
       </div>
     </div>
-
+<footer class="footer">
+          <div>Copyright &copy; 2018 iReporter</div>
+        </footer>
     <script src="js/main.js"></script>
   </body>
 </html>
