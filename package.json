@@ -8,7 +8,22 @@
     "dev": "nodemon ./app/app.js --exec babel-node",
     "build": "rm -rf build && mkdir build && babel -d ./build ./app -s",
     "start": "node ./build/app",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "coveralls": "nyc npm test && nyc report --reporter=lcov --reporter=text --reporter=lcovonly || coveralls"
+  },
+  "nyc": {
+    "exclude": [
+      "**/controllers/**"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
   },
   "repository": {
     "type": "git",

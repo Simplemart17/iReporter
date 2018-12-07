@@ -28,6 +28,10 @@ class RedflagController {
       return res.status(422).json({ error: "Title field is required!",
         status: 422,      
       });
+    } else if (!req.body.createdBy) {
+      return res.status(422).json({ error: "CreatedBy field is required!",
+        status: 422,      
+      });
     } else if (!req.body.type) {
       return res.status(422).json({ error: "Type field is required!",
         status: 422,      
@@ -36,7 +40,7 @@ class RedflagController {
       return res.status(422).json({ error: "Location field is required!",
         status: 422,      
       });
-    } else if (!req.body.comment) {
+    }  else if (!req.body.comment) {
       return res.status(422).json({ error: "Comment field is required!",
         status: 422,      
       });
@@ -44,6 +48,7 @@ class RedflagController {
     const data = {
       id: dbase.length + 1,
       title: req.body.title,
+      createdBy: req.body.createdBy,
       type: req.body.type,
       location: req.body.location,
       Images: req.body.Images,
