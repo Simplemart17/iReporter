@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/Simplemart17/iReporter.svg?branch=develop)](https://travis-ci.com/Simplemart17/iReporter)
-[![Coverage Status](https://coveralls.io/repos/github/Simplemart17/iReporter/badge.svg?branch=develop)](https://coveralls.io/github/Simplemart17/iReporter?branch=develop)
-[![Maintainability](https://api.codeclimate.com/v1/badges/b85bc0e6ad4861d2b8ec/maintainability)](https://codeclimate.com/github/Simplemart17/iReporter/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/b85bc0e6ad4861d2b8ec/test_coverage)](https://codeclimate.com/github/Simplemart17/iReporter/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b85bc0e6ad4861d2b8ec/maintainability)](https://codeclimate.com/github/Simplemart17/iReporter/maintainability)
+
 
 # iReporter
 This is an Andela Bootcamp Project, a Developer Challenge called iReporter
