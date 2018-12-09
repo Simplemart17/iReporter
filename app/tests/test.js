@@ -15,6 +15,7 @@ describe("Redflags /GET", () => {
           res.should.have.status(200);
           res.should.be.json;
           res.body.should.be.a("object");
+          res.body.should.have.property("message").equal("red-flags retrieved successfully");
         done();
         });
     });
@@ -28,6 +29,7 @@ describe("Redflags /GET", () => {
             res.should.have.status(200);
             res.body.should.be.a("object");
             res.body.should.have.property("data");
+            res.body.should.have.property("message").equal("Red-flag record retrieved successfully");
             done();
           });
       });
@@ -75,6 +77,20 @@ describe("Redflags /GET", () => {
           done();
         });
     }); 
+
+    it("should return error when any of the field is empty", (done) => {
+      chai.request(app)
+      .post("/api/v1/record/red-flags")
+        .send({
+          " ": " "
+        })
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.should.be.json;
+          res.body.should.have.property("error").equal("All fields are required!");
+          done();
+        });
+    });
   });
 
   describe("Redflag /PATCH", () => {
@@ -125,6 +141,7 @@ describe("Redflags /GET", () => {
             .send({" ": ""})
             .end((err, res) => {
               res.should.have.status(400);
+              res.body.should.have.property("error").equal("location field is required");
               done();
             });
         });
@@ -140,6 +157,7 @@ describe("Redflags /GET", () => {
             .send({" ": ""})
             .end((err, res) => {
               res.should.have.status(400);
+              res.body.should.have.property("error").equal("This field is required");
               done();
             });
         });
@@ -147,7 +165,7 @@ describe("Redflags /GET", () => {
   });
 
   describe("Redflag /DELETE", () => {
-    it("should delete the record from the database", (done) => {
+    it("shoud delete the record from the database", (done) => {
       chai.request(app)
       .get("/api/v1/record/red-flags")
       .end((err, res) => {
@@ -156,24 +174,22 @@ describe("Redflags /GET", () => {
           .end((err, res) => {
             res.should.have.status(200);
             res.should.be.json;
+            res.body.should.have.property("message").equal("The record deleted successfully");
             done();
           });
       });
     });
 
     it("should return an error if the id is not found", (done) => {
-      const data = {
-        id: "Not present"
-      }
       chai.request(app)
-        .get("/api/v1/record/red-flags")
+        .post("/api/v1/record/red-flags")
         .end((err, res) => {
           chai.request(app)
-          .delete("/api/v1/record/red-flags" + data.id)
+          .delete("/api/v1/record/red-flags")
           .end((err, res) => {
             res.should.have.status(404);
             done();
           });
         });
     });
-  });
+  }); 

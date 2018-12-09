@@ -24,24 +24,8 @@ class RedflagController {
   }
   
   createRedflag (req, res) {
-    if (!req.body.title) {
-      return res.status(422).json({ error: "Title field is required!",
-        status: 422,      
-      });
-    } else if (!req.body.createdBy) {
-      return res.status(422).json({ error: "CreatedBy field is required!",
-        status: 422,      
-      });
-    } else if (!req.body.type) {
-      return res.status(422).json({ error: "Type field is required!",
-        status: 422,      
-      });
-    } else if (!req.body.location) {
-      return res.status(422).json({ error: "Location field is required!",
-        status: 422,      
-      });
-    }  else if (!req.body.comment) {
-      return res.status(422).json({ error: "Comment field is required!",
+    if ((!req.body.title) || (!req.body.createdBy) || (!req.body.type) || (!req.body.location) || (!req.body.comment)) {
+      return res.status(422).json({ error: "All fields are required!",
         status: 422,      
       });
     } else {
