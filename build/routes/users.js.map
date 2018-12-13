@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../app/routes/users.js"],"names":[],"mappings":"AAAA","file":"users.js","sourcesContent":["/*import express from 'express';\n\nconst router = express.Router();\n\nrouter.post('/signup', (req, res) {\n  \n}\n\nexport default router;\n*/"]}

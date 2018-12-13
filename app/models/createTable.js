@@ -1,5 +1,5 @@
-const { Pool } = require('pg');
-const dotenv = require('dotenv');
+import { Pool }  from 'pg';
+import dotenv  from 'dotenv';
 
 dotenv.config();
 
@@ -31,11 +31,9 @@ const createRecordsTable = () => {
   pool.query(queryText)
     .then((res) => {
       console.log(res);
-      pool.end();
     })
     .catch((err) => {
       console.log(err);
-      pool.end();
     });
 };
 
@@ -65,56 +63,12 @@ const createUserTable = () => {
     });
 };
 
-const dropRecordsTable = () => {
-  const queryText = 'DROP TABLE IF EXISTS records returning *';
-  pool.query(queryText)
-    .then((res) => {
-      // console.log(res);
-      pool.end();
-    })
-    .catch((err) => {
-      // console.log(err);
-      pool.end();
-    });
-};
-
-const dropUsersTable = () => {
-  const queryText = 'DROP TABLE IF EXISTS users returning *';
-  pool.query(queryText)
-    .then((res) => {
-      // console.log(res);
-      pool.end();
-    })
-    .catch((err) => {
-      // console.log(err);
-      pool.end();
-    });
-};
-
 // Create All Tables
 const createAllTables = () => {
   createRecordsTable();
   createUserTable();
 };
 
-// Drop All Tables
-const dropAllTables = () => {
-  dropRecordsTable();
-  dropUsersTable();
-};
-
-pool.on('remove', () => {
-  console.log('client removed');
-  process.exit(0);
-});
-
-module.exports = {
-  createRecordsTable,
-  createUserTable,
-  createAllTables,
-  dropRecordsTable,
-  dropUsersTable,
-  dropAllTables,
-};
+createAllTables();
 
 require('make-runnable');

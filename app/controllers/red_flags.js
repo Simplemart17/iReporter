@@ -21,27 +21,25 @@ const RedFlags = {
     try {
       const { rows } = await dBase.query(text, values);
       return res.status(201).send({
-        status: 201,
         message: 'Redflag record created',
         records: rows[0] });
     } catch (error) {
-      console.log(error);
-      return res.status(400).send(error);
+      // console.log(error);
+      return res.send(error);
     }
   },
 
   async getAllRedflags(req, res) {
-    const findAllQuery = 'SELECT * FROM records';
+    const findAllQuery = `SELECT * FROM records WHERE records.type = 'Redflag'`;
     try {
       const { rows, rowCount } = await dBase.query(findAllQuery);
       return res.status(200).send({
-        status: 200,
         message: 'Redflags records retrieved',
         records: rows,
         Total: rowCount });
     } catch (error) {
       // console.log(error);
-      return res.status(400).send(error);
+      return res.send(error);
     }
   },
 
@@ -53,11 +51,10 @@ const RedFlags = {
         return res.status(404).send({ message: 'Redflag record not found' });
       }
       return res.status(200).send({
-        status: 200,
         message: 'Redflag record retrieved',
         records: rows[0] });
     } catch (error) {
-      return res.status(400).send(error);
+      return res.send(error);
     }
   },
 
@@ -77,11 +74,10 @@ const RedFlags = {
       ];
       const response = await dBase.query(updateOneQuery, values);
       return res.status(200).send({
-        status: 200,
         message: 'Redflag comment updated successfully!',
         records: response.rows[0] });
     } catch (error) {
-      return res.status(400).send(error);
+      return res.send(error);
     }
   },
 
@@ -101,11 +97,10 @@ const RedFlags = {
       ];
       const response = await dBase.query(updateOneQuery, values);
       return res.status(200).send({
-        status: 201,
         message: 'Redflag location successfully updated!',
         records: response.rows[0] });
     } catch (error) {
-      return res.status(400).send(error);
+      return res.send(error);
     }
   },
 
@@ -118,7 +113,7 @@ const RedFlags = {
       }
       return res.status(200).send({ message: 'Redflag record deleted successfully' });
     } catch (error) {
-      return res.status(400).send(error);
+      return res.send(error);
     }
   },
 };

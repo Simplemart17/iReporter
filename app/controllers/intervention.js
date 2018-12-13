@@ -26,12 +26,12 @@ const Intervention = {
         records: rows[0] });
     } catch (error) {
       console.log(error);
-      return res.status(400).send(error);
+      return res.send(error);
     }
   },
 
   async getAllIntervention(req, res) {
-    const findAllQuery = 'SELECT * FROM records';
+    const findAllQuery = `SELECT * FROM records WHERE records.type = 'Intervention'`;
     try {
       const { rows, rowCount } = await dBase.query(findAllQuery);
       return res.status(200).send({
@@ -41,7 +41,7 @@ const Intervention = {
         Total: rowCount });
     } catch (error) {
       // console.log(error);
-      return res.status(400).send(error);
+      return res.send(error);
     }
   },
 
@@ -57,7 +57,7 @@ const Intervention = {
         message: 'Intervention record retrieved',
         records: rows[0] });
     } catch (error) {
-      return res.status(400).send(error);
+      return res.send(error);
     }
   },
 
@@ -81,7 +81,7 @@ const Intervention = {
         message: 'Intervention comment updated successfully!',
         records: response.rows[0] });
     } catch (error) {
-      return res.status(400).send(error);
+      return res.send(error);
     }
   },
 
@@ -105,7 +105,7 @@ const Intervention = {
         message: 'Intervention location successfully updated!',
         records: response.rows[0] });
     } catch (error) {
-      return res.status(400).send(error);
+      return res.send(error);
     }
   },
 
@@ -118,7 +118,7 @@ const Intervention = {
       }
       return res.status(200).send({ message: 'Intervention record deleted successfully' });
     } catch (error) {
-      return res.status(400).send(error);
+      return res.send(error);
     }
   },
 };
