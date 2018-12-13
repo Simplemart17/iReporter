@@ -43,23 +43,12 @@
       <div class="row">
         <h1>Dashboard</h1>
         <div class="column left">
-          <div id="box">
-            <h2>Profile</h2>
-            <hr />
-            <div id="info">
-                <p><span class="title">Name:</span><br>
-                 <span id="name">Martins Abolade</span>
-              </p>
-              <p><span class="title">Username:</span><br>
-                 <span id="username">Simplemart17</span>
-              </p>
-              <p><span class="title">Email Address:</span>
-                
-                <span id="email">simplemart@gmail.com</span>
-              </p>
-              <p><span class="title">Phone Number:</span><br>
-                <span id="phone">08033089702</span>
-              </p>
+          <div id="right-box">
+              <div>
+              <button><a href="create.html">Create new</a></button>
+            </div>
+            <div>
+              <button><a href="my_record.html">My Records</a></button>
             </div>
           </div>
         </div>
@@ -72,11 +61,11 @@
               <div id="status" class="approved"><p>Approved</p></div> 
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Labore inventore eos saepe esse ut? Beatae maiores molestias
-                  corrupti libero fugit.. <button id="modalBtn" class="modalBtn">Read full</button></p>
+                  corrupti libero fugit... <button id="modalBtn" class="modalBtn">Read full</button></p>
                   <div id="modalPost" class="modal">
                       <div class="modal-content">
-                    <div class="modal-header">
-                          <span id="closeBtn" class="closeBtn">&times;</span>
+                    
+                          <span onclick="closeModal()" class="closeBtn">&times;</span>
                 <div class="action">
                   <div id="modify">
                     <p><a href="edit.html">Modify</a></p>
@@ -112,23 +101,14 @@
                   nostrum esse molestiae mollitia, at laudantium. Eos eveniet
                   incidunt praesentium iure at dignissimos ab ipsa quod!
                 </p>
-                </div>
+                
                 </div>
               </div>
             </li>  
             </ul>
           </article>
         </div>
-        <div class="column right">
-          <div id="right-box">
-              <div>
-              <button><a href="create.html">Create new</a></button>
-            </div>
-            <div>
-              <button><a href="my_record.html">My Records</a></button>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
 

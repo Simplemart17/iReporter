@@ -1,22 +1,26 @@
-let modal = document.getElementById('modalPost');
-let modalBtn = document.getElementById('modalBtn');
-let closebtn = document.getElementsByClassName('closeBtn'[0]);
+const modal = document.getElementById('modalPost');
+const modalBtn = document.getElementById('modalBtn');
+
 
 modalBtn.addEventListener('click', openModal);
-closeBtn.addEventListener('click', closeModal);
+
 window.addEventListener('click', outsideClick);
 
 
-function openModal(){
-    modal.style.display = 'block';
+function openModal() {
+  modal.style.display = 'block';
 }
 
-function closeModal(){
+function closeModal() {
+    document.getElementById('modalPost').style.display='none';
+}
+
+function outsideClick(e) {
+  if (e.target === modal) {
     modal.style.display = 'none';
+  }
 }
 
-function outsideClick(e){
-    if(e.target == modal){
-        modal.style.display = 'none';
-    }
-}
+
+
+
