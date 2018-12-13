@@ -6,7 +6,7 @@ dotenv.config();
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
-// console.log(process.env.DATABASE_URL);
+console.log(process.env.DATABASE_URL);
 
 pool.on('connect', () => {
   console.log('connected to database');
@@ -70,5 +70,3 @@ const createAllTables = () => {
 };
 
 createAllTables();
-
-require('make-runnable');

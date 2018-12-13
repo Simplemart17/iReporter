@@ -8,7 +8,7 @@
     "dev": "nodemon ./app/app.js --exec babel-node",
     "build": "rm -rf build && mkdir build && babel -d ./build ./app -s",
     "start": "node ./build/app",
-    "heroku-postbuild": "npm run build",
+    "heroku-postbuild": "npm run build && node build/models/createTable.js",
     "coverage": "nyc npm test && nyc report --reporter=lcov --reporter=text --reporter=lcovonly || coveralls",
     "local": "nyc --reporter=text --reporter=html mocha ./app/tests/test.js --require babel-polyfill --require babel-register --exit",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",

@@ -15,6 +15,58 @@ body {
   color: #000000;
 }
 
+/* flexslider */
+.flexslider {
+  margin: 00;
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    margin: 0 0 0 5%;
+  background: #fff;
+  position: relative;
+  zoom: 1;
+  border-radius: 4px;
+  box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+.flexslider .slides {
+  zoom: 1;
+}
+.flexslider .slides img {
+  
+  height: auto;
+}
+
+
+.story {
+    
+    padding: 1em .2em 2em;
+}
+.story-header {
+    margin-bottom: 0em;
+    font-size: 180%;
+}
+
+.story p {
+    
+    font-size: 150%;
+    font-style: italic;
+}
+
+
+    .story-wrapper img {
+        margin-left: 20px;
+        width: 40%!important;
+        
+    }
+
+    .story {
+        box-sizing: border-box;
+        width: 40%;
+        float: right;
+    }
+
+
+
 .wrap {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
