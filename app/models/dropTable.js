@@ -49,5 +49,3 @@ pool.on('remove', () => {
 });
 
 dropAllTables();
-
-require('make-runnable');
