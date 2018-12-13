@@ -1,20 +1,20 @@
-import express from "express";
-import redFlags from "../controllers/red_flags";
+import express from 'express';
+import redFlags from '../controllers/red_flags';
 
-const router = express.Router();
+const redRouter = express.Router();
 
-router.get("/red-flags", redFlags.getAllRedflags);
+redRouter.post('/red-flags', redFlags.createRedflag);
 
-router.get("/red-flags/:id", redFlags.getRedflag);
+redRouter.get('/red-flags', redFlags.getAllRedflags);
 
-router.post("/red-flags", redFlags.createRedflag);
+redRouter.get('/red-flags/:id', redFlags.getRedflag);
 
-router.patch("/red-flags/:id/comment", redFlags.updateRedflagComment);
+redRouter.patch('/red-flags/:id/comment', redFlags.updateRedflagComment);
 
-router.patch("/red-flags/:id/location", redFlags.updateRedflagLocation);
+redRouter.patch('/red-flags/:id/location', redFlags.updateRedflagLocation);
 
-router.delete("/red-flags/:id", redFlags.deleteRedflag);
+redRouter.delete('/red-flags/:id', redFlags.deleteRedflag);
 
 
 
-export default router;
+export default redRouter;
