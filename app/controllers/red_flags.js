@@ -1,4 +1,3 @@
-import uuidv4 from 'uuid/v4';
 import dBase from '../models/query';
 
 const RedFlags = {
@@ -8,7 +7,7 @@ const RedFlags = {
     VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
     returning *`;
     const values = [
-      uuidv4(),
+      req.body.id,
       req.body.title,
       req.body.createdBy,
       req.body.type,
