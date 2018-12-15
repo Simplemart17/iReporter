@@ -13,8 +13,8 @@
     "local": "nyc --reporter=text --reporter=html mocha ./app/tests/test.js --require babel-polyfill --require babel-register --exit",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint ./app",
-    "create-table": "node app/models/createTable",
-    "drop-table": "node app/models/dropTable"
+    "create-table": "node --require babel-polyfill --require babel-register app/models/createTable",
+    "drop-table": "node --require babel-polyfill --require babel-register app/models/dropTable"
   },
   "repository": {
     "type": "git",
