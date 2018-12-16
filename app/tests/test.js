@@ -1,15 +1,55 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
-import Redflags from '../controllers/red_flags';
-import db from '../models/dbaseSchema';
-const should = chai.should();
 
+process.env.NODE_ENV ='test';
+
+const should = chai.should();
 chai.use(chaiHttp);
 
+// Test for Redflags Route
+describe('POST /Redflags', () => {
+    it('should add a new redflag record', (done) => {
+      chai.request(app)
+        .post('/api/v1/record/red-flags')
+        .send({
+          'createdOn': '2018-12-12',
+          'title': 'title',
+          'createdBy': '1',
+          'type': 'Redflag',
+          'location': 'long -102, lat 111',
+          'images': 'image.jpeg',
+          'videos': 'youtube.com/lootedfund',
+          'comment': 'New comment'
+        })
+        .end((err, res) => {
+          res.should.have.status(201);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('records');
+          res.body.should.have.property('message');
+          res.body.message.should.equal('Redflag record created')
+          done();
+        });
+    }); 
 
-describe('Redflags /GET', () => {
-  it('should GET all the records', (done) => {
+    // it('should return error when any of the field is empty', (done) => {
+    //   chai.request(app)
+    //   .post('/api/v1/record/red-flags')
+    //     .send({
+    //       ' ': ' '
+    //     })
+    //     .end((err, res) => {
+    //       res.should.have.status(400);
+    //       res.should.be.json;
+    //       res.body.should.have.property('error').equal('All fields are required!');
+    //       done();
+    //     });
+    // });
+  });
+
+describe('GET/ Redflags', () => {
+  it('should GET all redflags records', (done) => {
       chai.request(app)
         .get('/api/v1/record/red-flags')
         .end((err, res) => {
@@ -22,15 +62,15 @@ describe('Redflags /GET', () => {
     });
   });
 
-  describe('Redflags /GET/:id', () => {
+  describe('GET /Redflags /:id', () => {
     it('should GET a redflag record by its id', (done) => {
       chai.request(app)
-          .get('/api/v1/record/red-flags/:id')
+          .get('/api/v1/record/red-flags/1')
           .end((err, res) => {
             res.should.have.status(200);
             res.body.should.be.a('object');
-            res.body.should.have.property('data');
-            res.body.should.have.property('message').equal('Red-flag record retrieved successfully');
+            res.body.should.have.property('records');
+            res.body.should.have.property('message').equal('Redflag record retrieved');
             done();
           });
       });
@@ -48,147 +88,86 @@ describe('Redflags /GET', () => {
       });
   });
 
-  describe('Redflags /POST', () => {
-    it('should add a new redflag record', (done) => {
-      chai.request(app)
-        .post('/api/v1/record/red-flags')
-        .send({
-          'title': 'title',
-          'createdBy': 'segun',
-          'type': 'redflag',
-          'location': '102, 111',
-          'status': 'under investigation',
-          'Images': ' ',
-          'Video': ' ',
-          'comment': 'New comment'
-        })
-        .end((err, res) => {
-          res.should.have.status(201);
-          res.should.be.json;
-          res.body.should.be.a('object');
-          res.body.should.have.property('data');
-          res.body.data.should.be.a('object');
-          res.body.data.should.have.property('title');
-          res.body.data.title.should.equal('title');
-          res.body.data.should.have.property('createdBy');
-          res.body.data.createdBy.should.equal('James');
-          res.body.data.should.have.property('type');
-          res.body.data.type.should.equal('redflag');
-          res.body.data.should.have.property('location');
-          res.body.data.location.should.equal('102, 111');
-          res.body.data.should.have.property('comment');
-          res.body.data.comment.should.equal('New comment');
-          done();
-        });
-    }); 
-
-    it('should return error when any of the field is empty', (done) => {
-      chai.request(app)
-      .post('/api/v1/record/red-flags')
-        .send({
-          ' ': ' '
-        })
-        .end((err, res) => {
-          res.should.have.status(400);
-          res.should.be.json;
-          res.body.should.have.property('error').equal('All fields are required!');
-          done();
-        });
-    });
-  });
-
-  describe('Redflag /PATCH', () => {
+  describe('PATCH /Redflag/', () => {
     it('should update location of a redflag record', (done) => {
-      const records = {
-        id: id,
-      }
-      chai.request(app)
+     chai.request(app)
         .get('/api/v1/record/red-flags')
         .end((err, res) => {
           chai.request(app)
-            .patch(`/api/v1/record/red-flags/${id}/location`)
-            .send({'location': '92, 113'})
+            .patch(`/api/v1/record/red-flags/1/location`)
+            .send({'location': 'long -92, lat 113'})
             .end((err, res) => {
               res.should.have.status(201);
               res.should.be.json;
               res.body.should.be.a('object');
-              res.body.should.have.property('newData');
-              res.body.newData.should.be.a('object');
-              res.body.newData.should.have.property('location');
-              res.body.newData.location.should.equal('92, 113');
+              res.body.should.have.property('message');
+              res.body.message.should.equal('Redflag location successfully updated!');
               done();
             });
         });
     });
 
     it('should update comment of a redflag record', (done) => {
-      const records = {
-        id: id,
-      }
       chai.request(app)
-        .get('/api/v1/record/record/red-flags')
+        .get('/api/v1/record/red-flags')
         .end((err, res) => {
           chai.request(app)
-            .patch(`/api/v1/record/red-flags/${id}/comment`)
-            .send({'comment': 'new comment'})
+            .patch(`/api/v1/record/red-flags/1/comment`)
+            .send({'comment': 'my comment'})
             .end((err, res) => {
               res.should.have.status(201);
               res.body.should.be.a('object');
-              res.body.should.have.property('newData');
-              res.body.newData.should.have.property('comment');
-              res.body.newData.comment.should.equal('new comment');
+              res.body.should.have.property('message');
+              res.body.message.should.equal('Redflag comment updated successfully!');
               done();
             });
         });
     });
 
-    it('should return error when location field is empty', (done) => {
-      chai.request(app)
-      .get('/api/v1/record/location/red-flags')
-        .end((err, res) => {
-          chai.request(app)
-            .patch('/api/v1/record/red-flags/1/location')
-            .send({' ': ' ' })
-            .end((err, res) => {
-              res.should.have.status(400);
-              res.body.should.have.property('error').equal('location field is required');
-              done();
-            });
-        });
+    // it('should return error when location field is empty', (done) => {
+    //   chai.request(app)
+    //   .get('/api/v1/record/red-flags)
+    //     .end((err, res) => {
+    //       chai.request(app)
+    //         .patch('/api/v1/record/red-flags/1/location')
+    //         .send({' ': ' ' })
+    //         .end((err, res) => {
+    //           res.should.have.status(400);
+    //           res.body.should.have.property('error').equal('location field is required');
+    //           done();
+    //         });
+    //     });
 
-    });
+    // });
 
-    it('should return error when comment field is empty', (done) => {
-      chai.request(app)
-      .get('/api/v1/record/location/red-flags')
-        .end((err, res) => {
-          chai.request(app)
-            .patch('/api/v1/record/red-flags/1/comment')
-            .send({' ': ' '})
-            .end((err, res) => {
-              res.should.have.status(400);
-              res.body.should.have.property('error').equal('This field is required');
-              done();
-            });
-        });
-    });
+    // it('should return error when comment field is empty', (done) => {
+    //   chai.request(app)
+    //   .get('/api/v1/record/red-flags')
+    //     .end((err, res) => {
+    //       chai.request(app)
+    //         .patch('/api/v1/record/red-flags/1/comment')
+    //         .send({' ': ' '})
+    //         .end((err, res) => {
+    //           res.should.have.status(400);
+    //           res.body.should.have.property('error').equal('This field is required');
+    //           done();
+    //         });
+    //     });
+    // });
   });
 
-  describe('Redflag /DELETE', () => {
-    it('shoud delete the record from the database', (done) => {
-      const records = {
-        id: id,
-      }
+  describe('DELETE /Redflag', () => {
+    it('shoud delete redflag record from the database', (done) => {
       chai.request(app)
       .get('/api/v1/record/red-flags')
       .end((err, res) => {
         chai.request(app)
-          .delete(`/api/v1/record/red-flags/${id}`)
+          .delete(`/api/v1/record/red-flags/1`)
           .end((err, res) => {
             res.should.have.status(200);
             res.should.be.json;
-            res.body.should.have.property('message').equal('The record deleted successfully');
-            done();
+            res.body.should.have.property('message').equal('Redflag record deleted successfully');
+            done(err);
           });
       });
     });
@@ -198,9 +177,190 @@ describe('Redflags /GET', () => {
         .post('/api/v1/record/red-flags')
         .end((err, res) => {
           chai.request(app)
-          .delete('/api/v1/record/red-flags')
+          .delete('/api/v1/record/red-flags/7878')
           .end((err, res) => {
             res.should.have.status(404);
+            res.body.should.have.property('message').equal('Redflag record not found');
+            done();
+          });
+        });
+    });
+  });
+
+  // Test for Intervention route
+  describe('POST /Intervention', () => {
+    it('should add a new intervention record', (done) => {
+      chai.request(app)
+        .post('/api/v1/record/intervention')
+        .send({
+          'createdOn': '2018-12-12',
+          'title': 'title',
+          'createdBy': '1',
+          'type': 'Intervention',
+          'location': 'long -102, lat 111',
+          'images': 'image.jpeg',
+          'videos': 'youtube.com/lootedfund',
+          'comment': 'New comment'
+        })
+        .end((err, res) => {
+          res.should.have.status(201);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('records');
+          res.body.should.have.property('message');
+          res.body.message.should.equal('Intervention record created')
+          done();
+        });
+    }); 
+
+    // it('should return error when any of the field is empty', (done) => {
+    //   chai.request(app)
+    //   .post('/api/v1/record/intervention')
+    //     .send({
+    //       ' ': ' '
+    //     })
+    //     .end((err, res) => {
+    //       res.should.have.status(400);
+    //       res.should.be.json;
+    //       res.body.should.have.property('error').equal('All fields are required!');
+    //       done();
+    //     });
+    // });
+  });
+
+describe('GET/ Interventions', () => {
+  it('should GET all interventions records', (done) => {
+      chai.request(app)
+        .get('/api/v1/record/intervention')
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('message').equal('Intervention records retrieved');
+        done();
+        });
+    });
+  });
+
+  describe('GET /Interventions /:id', () => {
+    it('should GET an intervention record by its id', (done) => {
+      chai.request(app)
+          .get('/api/v1/record/intervention/1')
+          .end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.be.a('object');
+            res.body.should.have.property('records');
+            res.body.should.have.property('message').equal('Intervention record retrieved');
+            done();
+          });
+      });
+
+      it('returns status 404 when id is not found', (done) => {
+        const records = {
+          id: 'Not present'
+        }
+        chai.request(app)
+          .get('/api/v1/record/intervention' + records.id)
+          .end((err, res) => {
+          res.should.have.status(404);
+          done();
+        });
+      });
+  });
+
+  describe('PATCH /Intervention/', () => {
+    it('should update location of a intervention record', (done) => {
+     chai.request(app)
+        .get('/api/v1/record/intervention')
+        .end((err, res) => {
+          chai.request(app)
+            .patch(`/api/v1/record/intervention/1/location`)
+            .send({'location': 'long -92, lat 113'})
+            .end((err, res) => {
+              res.should.have.status(201);
+              res.should.be.json;
+              res.body.should.be.a('object');
+              res.body.should.have.property('message');
+              res.body.message.should.equal('Intervention location successfully updated!');
+              done();
+            });
+        });
+    });
+
+    it('should update comment of an intervention record', (done) => {
+      chai.request(app)
+        .get('/api/v1/record/intervention')
+        .end((err, res) => {
+          chai.request(app)
+            .patch(`/api/v1/record/intervention/1/comment`)
+            .send({'comment': 'my comment'})
+            .end((err, res) => {
+              res.should.have.status(201);
+              res.body.should.be.a('object');
+              res.body.should.have.property('message');
+              res.body.message.should.equal('Intervention comment updated successfully!');
+              done();
+            });
+        });
+    });
+
+    // it('should return error when location field is empty', (done) => {
+    //   chai.request(app)
+    //   .get('/api/v1/record/intervention')
+    //     .end((err, res) => {
+    //       chai.request(app)
+    //         .patch('/api/v1/record/intervention/1/location')
+    //         .send({' ': ' ' })
+    //         .end((err, res) => {
+    //           res.should.have.status(400);
+    //           res.body.should.have.property('error').equal('location field is required');
+    //           done();
+    //         });
+    //     });
+
+    // });
+
+    // it('should return error when comment field is empty', (done) => {
+    //   chai.request(app)
+    //   .get('/api/v1/record/intervention')
+    //     .end((err, res) => {
+    //       chai.request(app)
+    //         .patch('/api/v1/record/intervention/1/comment')
+    //         .send({' ': ' '})
+    //         .end((err, res) => {
+    //           res.should.have.status(400);
+    //           res.body.should.have.property('error').equal('This field is required');
+    //           done();
+    //         });
+    //     });
+    // });
+  });
+
+  describe('DELETE /Intervention', () => {
+    it('shoud delete intervention record from the database', (done) => {
+      chai.request(app)
+      .get('/api/v1/record/intervention')
+      .end((err, res) => {
+        chai.request(app)
+          .delete('/api/v1/record/intervention/1')
+          .end((err, res) => {
+            res.should.have.status(200);
+            res.should.be.json;
+            res.body.should.have.property('message').equal('Intervention record deleted successfully');
+            done();
+          });
+      });
+    });
+
+    it('should return an error if the id is not found', (done) => {
+      chai.request(app)
+        .post('/api/v1/record/intervention')
+        .end((err, res) => {
+          chai.request(app)
+          .delete('/api/v1/record/intervention/7878')
+          .end((err, res) => {
+            res.should.have.status(404);
+            res.body.should.have.property('message').equal('Intervention record not found');
             done();
           });
         });

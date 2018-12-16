@@ -17,15 +17,16 @@ pool.connect();
 const createRecordsTable = () => {
   const queryText = `CREATE TABLE IF NOT EXISTS
   records(
-    id UUID PRIMARY KEY,
-    title VARCHAR(128) NOT NULL,
-    createdBy VARCHAR(128) NOT NULL,
-    type VARCHAR(128) NOT NULL,
-    location VARCHAR(128) NOT NULL,
-    status VARCHAR(128) NOT NULL,
-    Images TEXT,
-    Videos TEXT,
-    comment VARCHAR(128) NOT NULL
+    id SERIAL PRIMARY KEY,
+    createdOn DATE DEFAULT CURRENT_DATE,
+    title VARCHAR(128),
+    createdBy INTEGER,
+    type VARCHAR(128),
+    location VARCHAR(128),
+    status VARCHAR(128),
+    images VARCHAR,
+    videos VARCHAR,
+    comment VARCHAR(128)
 );`;
 
   pool.query(queryText)
@@ -41,14 +42,15 @@ const createRecordsTable = () => {
 const createUserTable = () => {
   const queryText = `CREATE TABLE IF NOT EXISTS
   users(
-    id UUID PRIMARY KEY,
-    email VARCHAR(128) UNIQUE NOT NULL,
-    password VARCHAR(128) NOT NULL,
-    firstaname VARCHAR(128) NOT NULL,
+    id SERIAL PRIMARY KEY,
+    firstname VARCHAR(128) NOT NULL,
     lastname VARCHAR(128) NOT NULL,
     othername VARCHAR(128) NOT NULL,
+    email VARCHAR(128) UNIQUE NOT NULL,
+    phoneNumber BIGINT,
     username VARCHAR(128) NOT NULL,
-    phoneNumber INTEGER,
+    registered TIMESTAMP,
+    password VARCHAR(128) NOT NULL,
     isAdmin BOOLEAN default FALSE
   );`;
 

@@ -6,6 +6,8 @@ install:
 cache:
   directories:
     - "node_modules"
+services:
+  - postgresql
 
 env:
   global:
@@ -16,6 +18,7 @@ before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
+  - psql -c 'create database travis_ci_test;' -U postgres
 
 script:
   - nyc --reporter=lcov yarn run test
