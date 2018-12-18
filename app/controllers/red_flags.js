@@ -8,7 +8,7 @@ const RedFlags = {
     returning *`;
     const values = [
       req.body.title,
-      req.body.createdBy,
+      req.user.id,
       req.body.type,
       req.body.location,
       'Draft',
@@ -31,6 +31,11 @@ const RedFlags = {
     const findAllQuery = `SELECT * FROM records WHERE records.type = 'Redflag'`;
     try {
       const { rows, rowCount } = await dBase.query(findAllQuery);
+      if (!rows[0]) {
+        return res.status(404).json({
+          message: 'No redflag record found'
+        });
+      }
       return res.status(200).json({
         message: 'Redflags records retrieved',
         records: rows,
@@ -64,7 +69,7 @@ const RedFlags = {
     try {
       const { rows } = await dBase.query(findOneQuery, [req.params.id]);
       if (!rows[0]) {
-        return res.status(404).json({ message: 'Redflag record not found' });
+        return res.status(404).json({ message: 'Redflag record not found!' });
       }
       const values = [
         req.body.comment || rows[0].comment,

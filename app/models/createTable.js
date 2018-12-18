@@ -6,7 +6,7 @@ dotenv.config();
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
-console.log(process.env.DATABASE_URL);
+// console.log(process.env.DATABASE_URL);
 
 pool.on('connect', () => {
   console.log('connected to database');
@@ -19,22 +19,23 @@ const createRecordsTable = () => {
   records(
     id SERIAL PRIMARY KEY,
     createdOn DATE DEFAULT CURRENT_DATE,
-    title VARCHAR(128),
-    createdBy INTEGER,
-    type VARCHAR(128),
-    location VARCHAR(128),
+    title VARCHAR(255) NOT NULL,
+    createdBy INTEGER NOT NULL,
+    type VARCHAR(128) NOT NULL,
+    location VARCHAR(128) NOT NULL,
     status VARCHAR(128),
-    images VARCHAR,
-    videos VARCHAR,
-    comment VARCHAR(128)
+    images VARCHAR(128),
+    videos VARCHAR(128),
+    comment TEXT NOT NULL,
+    FOREIGN KEY (createdBy) REFERENCES users (id) ON DELETE CASCADE
 );`;
 
   pool.query(queryText)
     .then((res) => {
-      console.log(res);
+      // console.log(res);
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
     });
 };
 
@@ -48,8 +49,8 @@ const createUserTable = () => {
     othername VARCHAR(128) NOT NULL,
     email VARCHAR(128) UNIQUE NOT NULL,
     phoneNumber BIGINT,
-    username VARCHAR(128) NOT NULL,
-    registered TIMESTAMP,
+    username VARCHAR(128) UNIQUE NOT NULL,
+    registered DATE DEFAULT CURRENT_DATE,
     password VARCHAR(128) NOT NULL,
     isAdmin BOOLEAN default FALSE
   );`;

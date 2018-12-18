@@ -8,7 +8,7 @@ const Intervention = {
     returning *`;
     const values = [
       req.body.title,
-      req.body.createdBy,
+      req.user.id,
       req.body.type,
       req.body.location,
       'Draft',
@@ -28,9 +28,14 @@ const Intervention = {
   },
 
   async getAllIntervention(req, res) {
-    const findAllQuery = `SELECT * FROM records WHERE records.type = 'Intervention'`;
+    const findAllQuery = `SELECT * FROM records WHERE records.type = 'Intervention' AND createdBy = $1`;
     try {
-      const { rows, rowCount } = await dBase.query(findAllQuery);
+      const { rows, rowCount } = await dBase.query(findAllQuery, [req.user.id]);
+      if (!rows[0]) {
+        return res.status(404).json({
+          message: 'No intervention record found'
+        });
+      }
       return res.status(200).json({
         message: 'Intervention records retrieved',
         records: rows,
@@ -42,9 +47,9 @@ const Intervention = {
   },
 
   async getIntervention(req, res) {
-    const text = `SELECT * FROM records WHERE id = $1 AND type = 'Intervention'`;
+    const text = `SELECT * FROM records WHERE id = $1, createdBy = $2 AND type = 'Intervention'`;
     try {
-      const { rows } = await dBase.query(text, [req.params.id]);
+      const { rows } = await dBase.query(text, [req.params.id, req.user.id]);
       if (!rows[0]) {
         return res.status(404).json({ message: 'Intervention record not found' });
       }
@@ -57,18 +62,19 @@ const Intervention = {
   },
 
   async updateInterventionComment(req, res) {
-    const findOneQuery = `SELECT * FROM records WHERE id = $1 AND type = 'Intervention'`;
+    const findOneQuery = `SELECT * FROM records WHERE id = $1, createdBy = $2 AND type = 'Intervention'`;
     const updateOneQuery = `UPDATE records
     SET comment = $1
-    WHERE id = $2`;
+    WHERE id = $2 AND createdBy = $3 returning *`;
     try {
-      const { rows } = await dBase.query(findOneQuery, [req.params.id]);
+      const { rows } = await dBase.query(findOneQuery, [req.params.id, req.user.id]);
       if (!rows[0]) {
-        return res.status(404).json({ message: 'Intervention record not found' });
+        return res.status(404).json({ message: 'Intervention record not found!' });
       }
       const values = [
         req.body.comment || rows[0].comment,
         req.params.id,
+        req.user.id
       ];
       const response = await dBase.query(updateOneQuery, values);
       return res.status(201).json({
@@ -80,18 +86,19 @@ const Intervention = {
   },
 
   async updateInterventionLocation(req, res) {
-    const findOneQuery = `SELECT * FROM records WHERE id = $1 AND type = 'Intervention'`;
+    const findOneQuery = `SELECT * FROM records WHERE id = $1, createdBy = $2 AND type = 'Intervention'`;
     const updateOneQuery = `UPDATE records
     SET location = $1
-    WHERE id = $2`;
+    WHERE id = $2 AND createdBy = $2 returning *`;
     try {
-      const { rows } = await dBase.query(findOneQuery, [req.params.id]);
+      const { rows } = await dBase.query(findOneQuery, [req.params.id], req.user.id);
       if (!rows[0]) {
         return res.status(404).json({ message: 'Intervention record not found' });
       }
       const values = [
         req.body.location || rows[0].location,
         req.params.id,
+        req.user.id
       ];
       const response = await dBase.query(updateOneQuery, values);
       return res.status(201).json({
@@ -103,9 +110,9 @@ const Intervention = {
   },
 
   async deleteIntervention(req, res) {
-    const deleteQuery = 'DELETE FROM records WHERE id = $1 returning *';
+    const deleteQuery = 'DELETE FROM records WHERE id = $1 AND createdBy = $2 returning *';
     try {
-      const { rows } = await dBase.query(deleteQuery, [req.params.id]);
+      const { rows } = await dBase.query(deleteQuery, [req.params.id, req.user.id]);
       if (!rows[0]) {
         return res.status(404).json({ message: 'Intervention record not found' });
       }
