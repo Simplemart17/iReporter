@@ -27,10 +27,12 @@ const Users = {
       const token = Helper.generateToken(rows[0].id);
       return res.status(201).json({ token });
     } catch(error) {
-      if (error) {
-        return res.status(400).json({ error: 'Email already exist' })
+      console.log(error);
+      if (error.constraint === 'users_email_key') {
+        return res.status(400).json({ error: 'Email already exist!' })
+      } else if (error.constraint === 'users_username_key') {
+        return res.status(400).json({ error: 'Username already exist!' })
       }
-      // console.log(error.routine);
       return res.json(error);
     }
   },

@@ -68,8 +68,8 @@ const createUserTable = () => {
 
 // Create All Tables
 const createAllTables = () => {
-  createRecordsTable();
   createUserTable();
+  createRecordsTable();
 };
 
 createAllTables();

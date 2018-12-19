@@ -17,6 +17,9 @@ const RedFlags = {
       req.body.comment
     ];
     try {
+      if (req.body.type !== 'Redflag') {
+        return res.status(400).json({error: 'Select a valid record type'})
+      }
       const { rows } = await dBase.query(text, values);
       return res.status(201).json({
         message: 'Redflag record created',
