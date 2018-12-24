@@ -4,9 +4,9 @@ import validation from '../middleware/validation';
 
 const userRouter = express.Router();
 
-userRouter.post('/auth/signup', validation.users, users.createUser);
+userRouter.post('/auth/signup', validation.userSignUp, users.createUser);
 
-userRouter.post('/auth/signin', validation.users, users.signin);
+userRouter.post('/auth/signin', validation.userSignIn, users.signin);
 
 userRouter.get('/auth/users', users.getUsers);
 

@@ -11,7 +11,30 @@ const pool = new Pool({
 pool.on('connect', () => {
   console.log('connected to database');
 });
-pool.connect();
+// pool.connect();
+
+// Create Users Table
+const createUserTable = () => {
+  const queryText = `CREATE TABLE IF NOT EXISTS
+  users(
+    id SERIAL PRIMARY KEY,
+    firstname VARCHAR(128) NOT NULL,
+    lastname VARCHAR(128) NOT NULL,
+    othername VARCHAR(128) NOT NULL,
+    email VARCHAR(128) UNIQUE NOT NULL,
+    phoneNumber BIGINT,
+    username VARCHAR(128) UNIQUE NOT NULL,
+    registered DATE DEFAULT CURRENT_DATE,
+    password VARCHAR(128) NOT NULL,
+    isAdmin BOOLEAN default FALSE
+  );`;
+  pool.query(queryText)
+};
+
+const dropUsersTable = () => {
+  const queryText = 'DROP TABLE users';
+  pool.query(queryText)
+};
 
 // Table for records
 const createRecordsTable = () => {
@@ -29,47 +52,34 @@ const createRecordsTable = () => {
     comment TEXT NOT NULL,
     FOREIGN KEY (createdBy) REFERENCES users (id) ON DELETE CASCADE
 );`;
-
   pool.query(queryText)
-    .then((res) => {
-      // console.log(res);
-    })
-    .catch((err) => {
-      // console.log(err);
-    });
 };
 
-// Create Users Table
-const createUserTable = () => {
-  const queryText = `CREATE TABLE IF NOT EXISTS
-  users(
-    id SERIAL PRIMARY KEY,
-    firstname VARCHAR(128) NOT NULL,
-    lastname VARCHAR(128) NOT NULL,
-    othername VARCHAR(128) NOT NULL,
-    email VARCHAR(128) UNIQUE NOT NULL,
-    phoneNumber BIGINT,
-    username VARCHAR(128) UNIQUE NOT NULL,
-    registered DATE DEFAULT CURRENT_DATE,
-    password VARCHAR(128) NOT NULL,
-    isAdmin BOOLEAN default FALSE
-  );`;
-
+const dropRecordsTable = () => {
+  const queryText = 'DROP TABLE records';
   pool.query(queryText)
-    .then((res) => {
-      // console.log(res);
-      pool.end();
-    })
-    .catch((err) => {
-      // console.log(err);
-      pool.end();
-    });
 };
 
-// Create All Tables
+pool.on('remove', () => {
+  console.log('client removed');
+  process.exit(0);
+});
+
 const createAllTables = () => {
-  createUserTable();
-  createRecordsTable();
+  createUserTable(),
+  createRecordsTable()
 };
 
-createAllTables();
+const dropAllTables = () => {
+  dropUsersTable(),
+  dropRecordsTable()
+};
+
+export {
+  createUserTable,
+  dropUsersTable,
+  createRecordsTable,
+  dropRecordsTable,
+  createAllTables,
+  dropAllTables
+};
