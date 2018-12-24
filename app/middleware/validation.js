@@ -25,10 +25,11 @@ class Validation {
   }
 
   // validation for users signup and signin
-  static users(req, res, next) {
+  static userSignUp(req, res, next) {
     let error;
     let whiteSpace = /^\s+$/g;
     let numReg = new RegExp(/^\+[0-9]{13}$|^[0-9]{11}$/);
+    let validEmail = new RegExp(/\S+@\S+\.\S/);
     const { firstname, lastname, othername, email, phoneNumber, username, password } = req.body;
     if (!firstname || firstname.match(whiteSpace)) {
       error = 'Firstname field cannot be empty';
@@ -46,6 +47,26 @@ class Validation {
       error = 'Email field cannot be empty';
     } else if (!phoneNumber.match(numReg)) {
       error = 'Enter phone number in the right format'
+    } else if (!email.match(validEmail)) {
+      error = 'Enter a valid email address!'
+    }
+    if (error) {
+      return res.status(400).json({error});
+    }
+    return next();
+  }
+
+  static userSignIn(req, res, next) {
+    let error;
+    let whiteSpace = /^\s+$/g;
+    let validEmail = new RegExp(/\S+@\S+\.\S/);
+    const { email, password } = req.body;
+    if (!email || email.match(whiteSpace)) {
+      error = 'email is required';
+    } else if (!password || password.match(whiteSpace)) {
+      error = 'Password field cannot be empty';
+    } else if (!email.match(validEmail)) {
+      error = 'Enter a valid email address!'
     }
     if (error) {
       return res.status(400).json({error});

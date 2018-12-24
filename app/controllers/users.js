@@ -1,14 +1,8 @@
 import dBase from '../models/query';
-import helper from '../helper/helper';
+import helper from '../Helper/Helper';
 
 const Users = {
   async createUser(req, res) {
-    if (!req.body.email || !req.body.password) {
-      return res.status(400).json({ error: 'Required field missing' });
-    }
-    if (!helper.isValidEmail(req.body.email)) {
-      return res.status(400).json({ error: 'Enter a valid email address' });
-    }
     const hashPassword = helper.hashPassword(req.body.password);
 
     const createQuery = `INSERT INTO users(firstname, lastname, othername, email, phoneNumber, username, password, isAdmin)
@@ -26,7 +20,10 @@ const Users = {
     try {
       const { rows } = await dBase.query(createQuery, values);
       const token = helper.generateToken(rows[0].id);
-      return res.status(201).json({ token });
+      return res.status(201).json({
+        message: 'You have successfully registered!',
+        token: token
+      });
     } catch(error) {
       // console.log(error);
       if (error.constraint === 'users_email_key') {
@@ -39,9 +36,6 @@ const Users = {
   },
 
   async signin(req, res) {
-    if (!req.body.email || !req.body.password) {
-      return res.status(400).json({ error: 'Required field is missing' });
-    }
     const text = 'SELECT * FROM users WHERE email = $1';
     try {
       const { rows } = await dBase.query(text, [req.body.email]);
@@ -52,7 +46,10 @@ const Users = {
         return res.status(400).json({ error: 'Incorrect password' });
       }
       const token = helper.generateToken(rows[0].id);
-      return res.status(200).json({ token });
+      return res.status(200).json({
+        message: 'You have successfully signed in!',
+        token: token
+      });
     } catch(error) {
       // console.log(error)
       return res.json(error);
