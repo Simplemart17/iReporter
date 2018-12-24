@@ -1,9 +1,9 @@
 import dBase from '../models/query';
-import helper from '../Helper/Helper';
+import { generateToken, generateHashPassword, comparePassword } from '../Helper/Helper';
 
 const Users = {
   async createUser(req, res) {
-    const hashPassword = helper.hashPassword(req.body.password);
+    const hashPassword = generateHashPassword(req.body.password);
 
     const createQuery = `INSERT INTO users(firstname, lastname, othername, email, phoneNumber, username, password, isAdmin)
     VALUES($1, $2, $3, $4, $5, $6, $7, $8) returning *`;
@@ -19,7 +19,7 @@ const Users = {
     ];
     try {
       const { rows } = await dBase.query(createQuery, values);
-      const token = helper.generateToken(rows[0].id);
+      const token = generateToken(rows[0].id);
       return res.status(201).json({
         message: 'You have successfully registered!',
         token: token
@@ -42,10 +42,10 @@ const Users = {
       if (!rows[0]) {
         return res.status(400).json({ error: 'Incorrect email address' });
       }
-      if (!helper.comparePassword(rows[0].password, req.body.password)) {
+      if (!comparePassword(rows[0].password, req.body.password)) {
         return res.status(400).json({ error: 'Incorrect password' });
       }
-      const token = helper.generateToken(rows[0].id);
+      const token = generateToken(rows[0].id);
       return res.status(200).json({
         message: 'You have successfully signed in!',
         token: token

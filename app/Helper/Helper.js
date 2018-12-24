@@ -5,18 +5,17 @@ import dotenv from 'dotenv';
 dotenv.config();
 const SECRET = process.env.SECRET;
 
-class Helper {
-    static hashPassword(password) {
+    function generateHashPassword(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8))
   };
 
   // To compare registered and signin password
-  static comparePassword(hashPassword, password){
+  function comparePassword(hashPassword, password) {
     return bcrypt.compareSync(password, hashPassword);
   };
 
   // Token generation
-  static generateToken(id) {
+  function generateToken(id) {
     const token = jwt.sign({
       userId: id
     },
@@ -24,6 +23,9 @@ class Helper {
     );
     return token;
   };
-}
 
-export default Helper;
+export {
+  generateHashPassword,
+  comparePassword,
+  generateToken
+};
