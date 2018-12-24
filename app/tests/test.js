@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
-import * as table from '../models/createTable';
+import helper from '../helper/helper';
 
 chai.use(chaiHttp);
 
