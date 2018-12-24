@@ -19,9 +19,9 @@ describe('POST /User', () => {
         firstname: 'Senator',
         lastname: 'Governor',
         othername: 'Chairman',
-        email: 'gov@gmail.com',
+        email: 'govern@gmail.com',
         phoneNumber: '+2348034567890',
-        username: 'president',
+        username: 'presidential',
         password: 'represent@t1v3'
       })
       .end((err, res) => {
