@@ -4,8 +4,9 @@
   "description": "This is a platform to bring to notice any form of corruption, and also report on things that needs government intervention",
   "main": "app.js",
   "scripts": {
-    "test": "nyc mocha ./app/tests/test.js --require babel-polyfill --require babel-register --exit",
+    "test": "nyc mocha ./build/tests/test.js",
     "dev": "nodemon ./app/app.js --exec babel-node",
+    "build": "rm -rf build && mkdir build && babel -d ./build ./app -s",
     "start": "babel-node ./app/app.js",
     "coverage": "nyc npm test && nyc report --reporter=lcov --reporter=text --reporter=lcovonly || coveralls",
     "local": "nyc --reporter=text --reporter=html mocha  --require babel-polyfill --require babel-register --exit",
