@@ -1,5 +1,5 @@
 import dBase from '../models/query';
-import { generateToken, generateHashPassword, comparePassword } from '../Helper/Helper';
+import { generateToken, generateHashPassword, comparePassword } from '../middleware/Helper.js';
 
 const Users = {
   async createUser(req, res) {
