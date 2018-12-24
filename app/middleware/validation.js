@@ -1,19 +1,22 @@
 class Validation {
+
+  // validation for records creation
   static input(req, res, next) {
     let error = '';
     let whiteSpace = /^\s+$/g;
-    const { comment, title, type, location } = req.body;
+    const { comment, title, type, location, isAdmin } = req.body;
     if (!comment || comment.match(whiteSpace)) {
       error = 'Comment field cannot be empty';
     } else if (comment.length < 20) {
       error = 'Enter detailed description of the report';
     } else if (!title || title.match(whiteSpace)) {
       error = 'Title field cannot be empty';
-      // console.log(title);
     } else if (!type || type === ' ') {
       error = 'Select a type of records to be submitted';
     } else if (!location || location.match(whiteSpace)) {
       error = 'Location field is important!';
+    } else if (!isAdmin || isAdmin.match(whiteSpace)) {
+      req.body.isAdmin = 'false';
     }
     if (error) {
       return res.status(400).json({error});
@@ -21,6 +24,7 @@ class Validation {
     return next();
   }
 
+  // validation for users signup and signin
   static users(req, res, next) {
     let error;
     let whiteSpace = /^\s+$/g;

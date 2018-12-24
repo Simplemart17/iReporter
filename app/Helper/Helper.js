@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 const SECRET = process.env.SECRET;
 
-const Helper = {
+const helper = {
   hashPassword(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10))
   },
@@ -31,4 +31,4 @@ const Helper = {
   }
 }
 
-export default Helper;
+export default helper;
