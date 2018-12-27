@@ -19,7 +19,7 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
   - psql -c 'create database travis_ci_test;' -U postgres
-  - 'CREATE TABLE IF NOT EXISTS
+  - CREATE TABLE IF NOT EXISTS
   users(
     id SERIAL PRIMARY KEY,
     firstname VARCHAR(128) NOT NULL,
@@ -31,8 +31,8 @@ before_script:
     registered DATE DEFAULT CURRENT_DATE,
     password VARCHAR(128) NOT NULL,
     isAdmin BOOLEAN default FALSE
-  );'
-  - 'CREATE TABLE IF NOT EXISTS
+  )
+  - CREATE TABLE IF NOT EXISTS
   records(
     id SERIAL PRIMARY KEY,
     createdOn DATE DEFAULT CURRENT_DATE,
@@ -45,15 +45,15 @@ before_script:
     videos VARCHAR(128),
     comment TEXT NOT NULL,
     FOREIGN KEY (createdBy) REFERENCES users (id) ON DELETE CASCADE
-);'
+)
   
 script:
   - nyc --reporter=lcov yarn run test
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-  - 'DROP TABLE records;'
-  - 'DROP TABLE users;'
+  - DROP TABLE records
+  - DROP TABLE users
 
 notifications:
   email: false
