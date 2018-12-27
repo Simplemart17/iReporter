@@ -1,11 +1,11 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config();
 const SECRET = process.env.SECRET;
 
-    function generateHashPassword(password) {
+  function generateHashPassword(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8))
   };
 
