@@ -52,8 +52,8 @@ script:
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-  - DROP TABLE users;
-  - DROPT TABLE records;
+  - DROP TABLE records;
+  - DROPT TABLE users;
 
 notifications:
   email: false
