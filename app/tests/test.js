@@ -43,6 +43,7 @@ describe('POST /User', () => {
       })
       .end((err, res) => {
         res.should.have.status(400);
+        res.body.should.be.a(object);
         res.body.should.have.property('error').equal('Firstname field cannot be empty');
         done();
       });
