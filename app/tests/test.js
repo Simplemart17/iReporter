@@ -19,12 +19,31 @@ describe('POST /User', () => {
         lastname: 'Governor',
         othername: 'Chairman',
         email: 'govern@gmail.com',
-        phoneNumber: '+2348034567890',
+        phoneNumber: '08034567890',
         username: 'presidential',
         password: 'represent@t1v3'
       })
       .end((err, res) => {
         res.should.have.status(201);
+        done();
+      });
+  });
+  
+  it('should return error when any of the field is empty', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        firstname: ' ',
+        lastname: 'Governor',
+        othername: 'Chairman',
+        email: 'govern@gmail.com',
+        phoneNumber: '08034567890',
+        username: 'presidential',
+        password: 'represent@t1v3'
+      })
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.have.property('error').equal('Firstname field cannot be empty');
         done();
       });
   });
