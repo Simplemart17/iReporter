@@ -5,15 +5,15 @@ import validation from '../middleware/validation';
 
 const intvRouter = express.Router();
 
-intvRouter.post('/intervention', Auth.verifyToken, validation.input, intervention.createIntervention);
+intvRouter.post('/intervention', Auth.verifyToken, validation.inputDetails, validation.inputComment, validation.inputLocation, intervention.createIntervention);
 
 intvRouter.get('/intervention', intervention.getAllIntervention);
 
 intvRouter.get('/intervention/:id', Auth.verifyToken, intervention.getIntervention);
 
-intvRouter.patch('/intervention/:id/comment', Auth.verifyToken, validation.input, intervention.updateInterventionComment);
+intvRouter.patch('/intervention/:id/comment', Auth.verifyToken, validation.inputComment, intervention.updateInterventionComment);
 
-intvRouter.patch('/intervention/:id/location', Auth.verifyToken, validation.input, intervention.updateInterventionLocation);
+intvRouter.patch('/intervention/:id/location', Auth.verifyToken, validation.inputLocation, intervention.updateInterventionLocation);
 
 intvRouter.delete('/intervention/:id', Auth.verifyToken, intervention.deleteIntervention);
 
