@@ -31,7 +31,7 @@ before_script:
     registered DATE DEFAULT CURRENT_DATE,
     password VARCHAR(128) NOT NULL,
     isAdmin BOOLEAN default FALSE
-  );
+  )
   - CREATE TABLE IF NOT EXISTS
   records(
     id SERIAL PRIMARY KEY,
@@ -45,15 +45,15 @@ before_script:
     videos VARCHAR(128),
     comment TEXT NOT NULL,
     FOREIGN KEY (createdBy) REFERENCES users (id) ON DELETE CASCADE
-);
-
+)
+  
 script:
   - nyc --reporter=lcov yarn run test
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-  - DROP TABLE users;
-  - DROPT TABLE records;
+  - DROP TABLE records
+  - DROP TABLE users
 
 notifications:
   email: false
