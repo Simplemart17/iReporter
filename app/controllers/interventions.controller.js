@@ -1,7 +1,7 @@
 import dBase from '../models/query';
 
-const RedFlags = {
-  async createRedflag(req, res) {
+const Intervention = {
+  async createIntervention(req, res) {
     const text = `INSERT INTO
     records (title, createdBy, type, location, status, images, videos, comment)
     VALUES($1, $2, $3, $4, $5, $6, $7, $8)
@@ -14,65 +14,67 @@ const RedFlags = {
       'Draft',
       req.body.images,
       req.body.videos,
-      req.body.comment
+      req.body.comment,
     ];
     try {
-      if (req.body.type !== 'Redflag') {
-        return res.status(400).json({error: 'Select a valid record type'})
+      if (req.body.type !== 'Intervention') {
+        return res.status(400).json({ error: 'Select a valid record type' });
       }
       const { rows } = await dBase.query(text, values);
       return res.status(201).json({
-        message: 'Redflag record created',
-        records: rows[0] });
+        message: 'Intervention record created',
+        records: rows[0],
+      });
     } catch (error) {
-      // console.log(error);
       return res.json(error);
     }
   },
 
-  async getAllRedflags(req, res) {
-    const findAllQuery = `SELECT * FROM records WHERE records.type = 'Redflag'`;
+  async getAllIntervention(req, res) {
+    const findAllQuery = 'SELECT * FROM records WHERE records.type = \'Intervention\'';
     try {
       const { rows, rowCount } = await dBase.query(findAllQuery);
       if (!rows[0]) {
         return res.status(404).json({
-          message: 'No redflag record found'
+          message: 'No intervention record found',
         });
       }
       return res.status(200).json({
-        message: 'Redflags records retrieved',
+        message: 'Intervention records retrieved',
         records: rows,
-        Total: rowCount });
+        Total: rowCount,
+      });
     } catch (error) {
-      // console.log(error);
       return res.json(error);
     }
   },
 
-  async getRedflag(req, res) {
-    const text = `SELECT * FROM records WHERE id = $1 AND type = 'Redflag'`;
+  async getIntervention(req, res) {
+    const text = 'SELECT * FROM records WHERE id = $1 AND type = \'Intervention\'';
     try {
       const { rows } = await dBase.query(text, [req.params.id]);
       if (!rows[0]) {
-        return res.status(404).json({ message: 'Redflag record not found' });
+        return res.status(404).json({ message: 'Intervention record not found' });
       }
       return res.status(200).json({
-        message: 'Redflag record retrieved',
-        records: rows[0] });
+        message: 'Intervention record retrieved',
+        records: rows[0],
+      });
     } catch (error) {
+      console.log(error);
       return res.json(error);
     }
   },
 
-  async updateRedflagComment(req, res) {
-    const findOneQuery = `SELECT * FROM records WHERE id = $1  AND type = 'Redflag'`;
+  async updateInterventionComment(req, res) {
+    const findOneQuery = 'SELECT * FROM records WHERE id = $1 AND type = \'Intervention\'';
     const updateOneQuery = `UPDATE records
     SET comment = $1
     WHERE id = $2`;
     try {
       const { rows } = await dBase.query(findOneQuery, [req.params.id]);
       if (!rows[0]) {
-        return res.status(404).json({ message: 'Redflag record not found!' });
+        return res.status(404).json({ message: 'Intervention record not found!' });
       }
       const values = [
         req.body.comment || rows[0].comment,
@@ -80,22 +82,23 @@ const RedFlags = {
       ];
       const response = await dBase.query(updateOneQuery, values);
       return res.status(201).json({
-        message: 'Redflag comment updated successfully!',
-        records: response.rows[0] });
+        message: 'Intervention comment updated successfully!',
+        records: response.rows[0],
+      });
     } catch (error) {
       return res.json(error);
     }
   },
 
-  async updateRedflagLocation(req, res) {
-    const findOneQuery = `SELECT * FROM records WHERE id = $1 AND type = 'Redflag'`;
+  async updateInterventionLocation(req, res) {
+    const findOneQuery = 'SELECT * FROM records WHERE id = $1 AND type = \'Intervention\'';
     const updateOneQuery = `UPDATE records
     SET location = $1
     WHERE id = $2`;
     try {
       const { rows } = await dBase.query(findOneQuery, [req.params.id]);
       if (!rows[0]) {
-        return res.status(404).json({ message: 'Redflag record not found' });
+        return res.status(404).json({ message: 'Intervention record not found' });
       }
       const values = [
         req.body.location || rows[0].location,
@@ -103,25 +106,26 @@ const RedFlags = {
       ];
       const response = await dBase.query(updateOneQuery, values);
       return res.status(201).json({
-        message: 'Redflag location successfully updated!',
-        records: response.rows[0] });
+        message: 'Intervention location successfully updated!',
+        records: response.rows[0],
+      });
     } catch (error) {
       return res.json(error);
     }
   },
 
-  async deleteRedflag(req, res) {
+  async deleteIntervention(req, res) {
     const deleteQuery = 'DELETE FROM records WHERE id = $1 returning *';
     try {
       const { rows } = await dBase.query(deleteQuery, [req.params.id]);
       if (!rows[0]) {
-        return res.status(404).json({ message: 'Redflag record not found' });
+        return res.status(404).json({ message: 'Intervention record not found' });
       }
-      return res.status(200).json({ message: 'Redflag record deleted successfully' });
+      return res.status(200).json({ message: 'Intervention record deleted successfully' });
     } catch (error) {
       return res.json(error);
     }
   },
 };
 
-export default RedFlags;
+export default Intervention;

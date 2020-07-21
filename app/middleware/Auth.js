@@ -1,30 +1,58 @@
 import jwt from 'jsonwebtoken';
-import dBase from '../models/query';
 import dotenv from 'dotenv';
 
 dotenv.config();
-const SECRET = process.env.SECRET;
 
-const Auth = {
-  async verifyToken(req, res, next) {
+class Auth {
+  /**
+   * @description - Checks if user token is valid
+   * @param {object} req
+   * @param {object} res
+   * @param {function} next
+   * @returns {*} - returns next() or response object when there is an error
+   */
+  static async verifyToken(req, res, next) {
     const token = req.headers['x-access-token'];
+
     if (!token) {
-      return res.status(400).json({ error: 'Token is not provided' });
+      return res.status(401).json({
+        status: 401,
+        error: 'You have to sign in to continue',
+      });
     }
+
     try {
-      const decoded = await jwt.verify(token, SECRET);
-      const text = 'SELECT * FROM users WHERE id = $1';
-      const { rows } = await dBase.query(text, [decoded.userId]);
-      if (!rows[0]) {
-        return res.status(400).json({ error: 'The token you provided is invalid' });
-      }
-      req.user = { id: decoded.userId };
-      next();
+      const decoded = await jwt.verify(token, process.env.SECRET);
+      req.user = { token, decoded };
+    } catch (error) {
+      const message = (error.name === 'TokenExpiredError') ? 'Token has expired' : 'Invalid token';
+
+      return res.status(401).json({
+        status: 401,
+        error: message,
+      });
     }
-    catch (error) {
-      return res.status(400).json(error);
+    return next();
+  }
+
+  /**
+ * @description - Checks if user is an admin
+ * @param {object} req
+ * @param {object} res
+ * @param {function} next
+ * @returns {*} - returns next() or response object when there is an error
+ */
+  static async checkIsAdmin(req, res, next) {
+    const { decoded: { isAdmin } } = req.user;
+
+    if (!isAdmin) {
+      return res.status(403).json({
+        status: 403,
+        error: 'You cannot access this route!',
+      });
     }
-  },
-};
+    return next();
+  }
+}
 
 export default Auth;
