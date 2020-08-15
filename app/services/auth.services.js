@@ -3,7 +3,7 @@ import models from '../database/models';
 
 const { User } = models;
 
-export default class Auth {
+export default class AuthServices {
   /**
    * @description - This method generate quryto create new user
    * @param {Object} payload
@@ -28,6 +28,12 @@ export default class Auth {
     }
   }
 
+  /**
+   * @description - This method get a single user by email
+   * @param {string} email
+   *
+   * @returns {Object} - User object
+   */
   static getUserByEmail(email) {
     return User.findOne({
       where: {
@@ -37,6 +43,14 @@ export default class Auth {
     });
   }
 
+  /**
+   * @description -  This method get all the users in the system
+   * @param {boolean} admin
+   * @param {integer} limit
+   * @param {number} page
+   *
+   * @returns {Array}
+   */
   static async getAllUsers(admin, limit, page) {
     const offset = limit * (page - 1);
     try {
@@ -48,6 +62,7 @@ export default class Auth {
             [Op.ne]: admin,
           },
         },
+        attributes: { exclude: ['password'] },
         raw: true,
       });
       const { count, rows } = users;
@@ -57,7 +72,6 @@ export default class Auth {
       const prevPage = currentPage === 1 ? null : currentPage - 1;
 
       return {
-        success: true,
         rows,
         meta: {
           limit,

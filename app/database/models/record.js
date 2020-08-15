@@ -12,10 +12,6 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      createdOn: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
       createdBy: {
         type: DataTypes.BIGINT,
         allowNull: true,
@@ -31,6 +27,7 @@ export default (sequelize, DataTypes) => {
       status: {
         type: DataTypes.STRING,
         allowNull: false,
+        defaultValue: 'Draft',
       },
       imageUrl: {
         type: DataTypes.STRING,

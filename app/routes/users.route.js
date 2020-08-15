@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import users from '../controllers/users.controller';
+import Users from '../controllers/users.controller';
 import validation from '../middleware/validation';
 import Auth from '../middleware/Auth';
 
-const { registerUser, signin, getUsers } = users;
+const { registerUser, signin, getUsers } = Users;
 const { verifyToken, checkIsAdmin } = Auth;
 
 const route = Router();

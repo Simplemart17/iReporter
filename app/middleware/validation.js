@@ -11,7 +11,7 @@ class Validation {
     if (!title || title.match(whiteSpace)) {
       error.push({ title: 'Title field cannot be empty' });
     }
-    if (!type || type === ' ') {
+    if (!type || type === ' ' || type.match(whiteSpace)) {
       error.push({ type: 'Select a type of records to be submitted' });
     }
     if (error.length) {

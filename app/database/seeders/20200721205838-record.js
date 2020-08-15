@@ -5,7 +5,6 @@ export default {
       {
         createdBy: '2',
         title: 'New Policy Making',
-        createdOn: new Date(),
         type: 'Intervention',
         imageUrl: '',
         videoUrl: '',
@@ -17,7 +16,6 @@ export default {
       {
         createdBy: '2',
         title: 'Africa on the rise',
-        createdOn: new Date(),
         type: 'Intervention',
         imageUrl: '',
         videoUrl: '',
@@ -29,7 +27,6 @@ export default {
       {
         createdBy: '1',
         title: 'A new dawn',
-        createdOn: new Date(),
         type: 'Redflag',
         imageUrl: '',
         videoUrl: '',
@@ -41,7 +38,6 @@ export default {
       {
         createdBy: '2',
         title: 'Testing the water',
-        createdOn: new Date(),
         type: 'Redflag',
         imageUrl: '',
         videoUrl: '',
