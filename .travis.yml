@@ -1,29 +1,40 @@
 language: node_js
+
 node_js:
-- "stable"
+  - "stable"
+
 install:
   - npm install
-cache:
-  directories:
-    - "node_modules"
+
 services:
   - postgresql
+addons:
+  postgresql: "12"
+  apt:
+    packages:
+      - postgresql-12
+      - postgresql-client-12
 
 env:
   global:
-    - CC_TEST_REPORTER_ID=d91e82f9734cc9e588b7dcad24ef53ac6f9d9a75333c2b5c1d54c2444035adb0
-    
-before_script:
-  - yarn global add nyc
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-  
-script:
-  - nyc --reporter=lcov yarn run test
+    - PGPORT=5433
+    - DB_TEST=ireporter_test
+    - DB_USER=ireporter
+    - DB_PASSWORD=ireporterPassword
 
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+before_script:
+  - psql --command="CREATE USER ${DB_USER};"
+  - psql --command="CREATE DATABASE ${DB_NAME} WITH OWNER = ${DB_USER};"
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - npm test
+
+after_success:
+  - npm run coverage
 
 notifications:
   email: false

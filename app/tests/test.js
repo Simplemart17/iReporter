@@ -45,8 +45,9 @@ describe('POST /Register', () => {
         password: 'represent@t1v3',
       })
       .end((err, res) => {
+        console.log(err, res);
         res.should.have.status(201);
-        done();
+        done(err);
       });
   });
 
@@ -65,7 +66,7 @@ describe('POST /Register', () => {
         res.should.have.status(400);
         res.body.should.be.a('object');
         error.should.have.property('fullname').equal('Fullname field cannot be empty');
-        done();
+        done(err);
       });
   });
 
@@ -81,7 +82,7 @@ describe('POST /Register', () => {
       })
       .end((err, res) => {
         res.should.have.status(409);
-        done();
+        done(err);
       });
   });
 
@@ -97,7 +98,7 @@ describe('POST /Register', () => {
       })
       .end((err, res) => {
         res.should.have.status(409);
-        done();
+        done(err);
       });
   });
 });
@@ -114,7 +115,7 @@ describe('POST /Signin', () => {
         res.should.have.status(200);
         res.body.message.should.equal('You have successfully signed in!');
         email.should.equal('govern@gmail.com');
-        done();
+        done(err);
       });
   });
 
@@ -125,7 +126,7 @@ describe('POST /Signin', () => {
       .end((err, res) => {
         res.should.have.status(404);
         res.body.error.should.equal('Incorrect email or password');
-        done();
+        done(err);
       });
   });
 });
@@ -150,7 +151,7 @@ describe('GET /Users', () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.body.message.should.equal('Users successfully retrieved!');
-        done();
+        done(err);
       });
   });
 
@@ -201,7 +202,7 @@ describe('POST /Records', () => {
       .end((err, res) => {
         res.should.have.status(201);
         res.body.should.be.a('object');
-        done();
+        done(err);
       });
   });
 
@@ -211,7 +212,7 @@ describe('POST /Records', () => {
       .set('x-access-token', userToken)
       .end((err, res) => {
         res.should.have.status(200);
-        done();
+        done(err);
       });
   });
 
@@ -221,7 +222,7 @@ describe('POST /Records', () => {
       .set('x-access-token', userToken)
       .end((err, res) => {
         res.should.have.status(200);
-        done();
+        done(err);
       });
   });
 });

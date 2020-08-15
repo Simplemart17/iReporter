@@ -14,11 +14,10 @@
     "db-refresh:test": "NODE_ENV=test npm run db-migrate:undo:test && npm run db-migrate:test && npm run db-seed:test",
     "db-seed": "./node_modules/.bin/babel-node ./node_modules/.bin/sequelize db:seed:all",
     "db-seed:test": "NODE_ENV=test ./node_modules/.bin/babel-node ./node_modules/.bin/sequelize db:seed:all",
-    "coverage": "nyc npm test && nyc report --reporter=lcov --reporter=text --reporter=lcovonly || coveralls",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "local": "nyc --reporter=text --reporter=html mocha ./app/tests/test.js --require @babel/register --exit",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint ./app",
-    "test": "npm run db-refresh:test && NODE_ENV=test nyc mocha ./app/tests/test.js --require @babel/register --exit"
+    "test": "npm run db-refresh:test && NODE_ENV=test nyc mocha ./app/tests/test.js --require @babel/register --timeout 20000 --exit"
   },
   "repository": {
     "type": "git",
@@ -66,8 +65,5 @@
     "sequelize": "^6.3.3",
     "sequelize-cli": "^6.2.0",
     "supertest": "^3.3.0"
-  },
-  "engines": {
-    "node": "13.14.0"
   }
 }
