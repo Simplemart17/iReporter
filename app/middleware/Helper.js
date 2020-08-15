@@ -3,29 +3,17 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config();
-const SECRET = process.env.SECRET;
 
-  function generateHashPassword(password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8))
-  };
+const expiryTime = { expiresIn: String(process.env.SIGNIN_TOKEN_EXPIRES) };
 
-  // To compare registered and signin password
-  function comparePassword(hashPassword, password) {
-    return bcrypt.compareSync(password, hashPassword);
-  };
 
-  // Token generation
-  function generateToken(id) {
-    const token = jwt.sign({
-      userId: id
-    },
-      SECRET, { expiresIn: '2d' }
-    );
-    return token;
-  };
+// To compare stored and signin password
+const comparePassword = (hashPassword, password) => bcrypt.compareSync(password, hashPassword);
+
+// Token generation
+const generateToken = (user, expires = expiryTime) => jwt.sign(user, process.env.SECRET, expires);
 
 export {
-  generateHashPassword,
   comparePassword,
-  generateToken
+  generateToken,
 };

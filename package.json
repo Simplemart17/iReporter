@@ -4,13 +4,20 @@
   "description": "This is a platform to bring to notice any form of corruption, and also report on things that needs government intervention",
   "main": "app.js",
   "scripts": {
-    "test": "nyc mocha ./app/tests/test.js --require babel-polyfill --require babel-register --exit",
     "dev": "nodemon ./app/app.js --exec babel-node",
     "start": "babel-node ./app/app.js",
-    "coverage": "nyc npm test && nyc report --reporter=lcov --reporter=text --reporter=lcovonly || coveralls",
-    "local": "nyc --reporter=text --reporter=html mocha ./app/tests/test.js --require babel-polyfill --require babel-register --exit",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "eslint ./app"
+    "db-migrate": "./node_modules/.bin/babel-node ./node_modules/.bin/sequelize db:migrate",
+    "db-migrate:undo": "./node_modules/.bin/babel-node ./node_modules/.bin/sequelize db:migrate:undo:all",
+    "db-refresh": "npm run db-migrate:undo && npm run db-migrate && npm run db-seed",
+    "db-migrate:test": "NODE_ENV=test ./node_modules/.bin/babel-node ./node_modules/.bin/sequelize db:migrate",
+    "db-migrate:undo:test": "NODE_ENV=test ./node_modules/.bin/babel-node ./node_modules/.bin/sequelize db:migrate:undo:all",
+    "db-refresh:test": "NODE_ENV=test npm run db-migrate:undo:test && npm run db-migrate:test && npm run db-seed:test",
+    "db-seed": "./node_modules/.bin/babel-node ./node_modules/.bin/sequelize db:seed:all",
+    "db-seed:test": "NODE_ENV=test ./node_modules/.bin/babel-node ./node_modules/.bin/sequelize db:seed:all",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "local": "nyc --reporter=text --reporter=html mocha ./app/tests/test.js --require @babel/register --exit",
+    "lint": "eslint ./app",
+    "test": "npm run db-refresh:test && NODE_ENV=test nyc mocha ./app/tests/test.js --require @babel/register --timeout 20000 --exit"
   },
   "repository": {
     "type": "git",
@@ -28,21 +35,21 @@
   },
   "homepage": "https://github.com/Simplemart17/iReporter#readme",
   "devDependencies": {
-    "chai": "^4.2.0",
     "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.18.9"
+    "mocha": "^8.0.1",
+    "nodemon": "^2.0.4"
   },
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "bcrypt": "^3.0.4",
-    "body-parser": "^1.18.3",
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/register": "^7.10.5",
+    "bcrypt": "^5.0.0",
+    "chai": "^4.2.0",
     "chai-http": "^4.2.0",
     "cors": "^2.8.5",
     "coveralls": "^3.0.3",
@@ -51,13 +58,12 @@
     "jsonwebtoken": "^8.4.0",
     "mocha-lcov-reporter": "^1.3.0",
     "moment": "^2.22.2",
-    "nyc": "^13.3.0",
+    "nyc": "^15.1.0",
     "pg": "^7.7.1",
+    "pg-hstore": "^2.3.3",
     "request": "^2.88.0",
-    "sequelize": "^4.43.0",
+    "sequelize": "^6.3.3",
+    "sequelize-cli": "^6.2.0",
     "supertest": "^3.3.0"
-  },
-  "engines": {
-    "node": "10.15.0"
   }
 }
