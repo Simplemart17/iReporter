@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="iReporter is an information channel for happenings around you"
+    />
+    <meta
+      name="keywords"
+      content="activities, reports, investigation, corruption"
+    />
+    <meta name="author" content="Martins Aloba" />
+    <title>Register || iReporter</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/signup.css" />
+  </head>
+  <body>
+    <div class="nav">
+      <div class="nav-center">
+        <div class="nav-header">
+          <div class="nav-title">
+            <a href="index.html"><img src="img/reporter-red.png"/></a>
+          </div>
+        </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span> <span></span> <span></span>
+          </label>
+        </div>
+        <input type="checkbox" id="nav-check" />
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="signin.html">Sign In</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="box">
+        <h2>Create An Account</h2>
+        <div class="signup">
+          <form>
+            <p id="error_message"></p>
+            <p id="success_message"></p>  
+          
+            <div class="row">
+              <label class="left">Firstname</label>
+              <div class="right">
+                <input
+                type="text"
+                required="true"
+                id="signup_firstname"
+                autocomplete="name"
+              />
+            </div>
+            </div>
+            <div class="row">
+              <label class="left">Lastname</label>
+              <div class="right">
+                <input
+                type="text"
+                required="true"
+                id="signup_lastname"
+                autocomplete="name"
+              />
+            </div>
+            </div>
+            <div class="row">
+              <label class="left">Othername</label>
+              <div class="right">
+                <input
+                type="text"
+                required="true"
+                id="signup_othername"
+                autocomplete="name"
+              />
+            </div>      
+            </div>
+              <div class="row">
+              <label class="left">Email Address</label>
+              <div class="right">
+                <input
+                type="email"
+                required="true"
+                id="signup_email"
+                autocomplete="email"
+              />
+            </div>      
+            </div>
+           
+            <div class="row">
+              <label class="left">Phone Number</label>
+                <div class="right">
+              <input
+                type="number"
+                required="true"
+                id="signup_phonenumber"
+                autocomplete="mobile"
+              />
+            </div>
+            </div>
+            <div class="row">
+              <label class="left">Username</label>
+                <div class="right">
+              <input
+                type="text/number"
+                required="true"
+                id="signup_username"
+                autocomplete="username"
+              />
+            </div>        
+            </div>
+            <div class="row">
+              <label class="left">Password</label>
+                <div class="right">
+              <input
+                type="password"
+                required="true"
+                id="signup_password"
+                autocomplete="password"
+              />
+            </div>
+            </div>
+            <div class="row">
+              <label class="left">Confirm Password</label>
+                <div class="right">
+              <input
+                type="password"
+                required="true"
+                id="confirm_password"
+                autocomplete="password"
+              />
+            </div>
+            </div>
+            <div>
+              <button type="submit" id="signup-btn">Sign up</button>
+              <button type="submit" id="cancel-btn">Cancel</button>
+            </div>
+          </form>
+          <div class="links">
+              <p>Already have an account?
+            <a href="signin.html">Signin</a></p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+<footer class="footer">
+          <div>Copyright &copy; 2018 iReporter</div>
+        </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>

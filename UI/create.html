@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="iReporter is an information channel for happenings around you"
+    />
+    <meta
+      name="keywords"
+      content="activities, reports, investigation, corruption"
+    />
+    <meta name="author" content="Martins Aloba" />
+    <title>Create Report || iReporter</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/create.css" />
+  </head>
+  <body>
+    <div class="nav">
+            <div class="nav-center">
+              <div class="nav-header">
+                <div class="nav-title">
+                  <a href="index.html"><img src="img/reporter-red.png"/></a>
+                </div>
+              </div>
+              <div class="nav-btn">
+                <label for="nav-check">
+                  <span></span> <span></span> <span></span>
+                </label>
+              </div>
+              <input type="checkbox" id="nav-check" />
+              <div class="nav-links">
+                <a href="dashboard.html" id="active">Dashboard</a>
+                <a href="signin.html">Sign Out</a>
+              </div>
+            </div>
+          </div>
+      <div class="container">
+        <div><h2>Create Report</h2></div>
+        <form>
+          <p id="error_message"></p>
+          <p id="success_message"></p>
+          <div class="row">
+            <div class="left"><label>Title</label></div>
+            <div class="right">
+              <input
+                type="text"
+                required="true"
+                id="title"
+                autocomplete="title"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="left"><label>Report Type</label></div>
+            <div class="right">
+              <select id="report-type">
+                <option value="redflag">Red Flag</option>
+                <option value="intervention">Intervention</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="left"><label>Comment</label></div>
+            <div class="right">
+              <textarea id="description" required="true" resize="no"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="left"><label>Location</label></div>
+            <div class="right">
+              <input type="text" required="true" id="location" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="left"><label>Video Link</label></div>
+            <div class="right">
+              <input type="url" required="true" id="video_link" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="left"><label>Upload Image(s)</label></div>
+            <div class="right">
+              <input type="file" /><img src="" height="100" alt="" />
+            </div>
+          </div>
+          <div>
+            <button type="submit" id="submit-btn">Submit</button>
+            <button type="submit" id="cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    <footer class="footer"><div>Copyright &copy; 2018 iReporter</div></footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>

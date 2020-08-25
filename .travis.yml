@@ -1,0 +1,38 @@
+language: node_js
+
+node_js:
+  - "stable"
+
+install:
+  - npm install
+
+services:
+  - postgresql
+addons:
+  postgresql: "9.6"
+
+env:
+  global:
+    - CC_TEST_REPORTER_ID=d91e82f9734cc9e588b7dcad24ef53ac6f9d9a75333c2b5c1d54c2444035adb0
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+  - psql -c 'create database ireporter_test_db;' -U postgres
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - npm test
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+after_success:
+  - npm run coverage
+
+notifications:
+  email: false

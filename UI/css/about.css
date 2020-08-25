@@ -1,0 +1,19 @@
+body {
+  background: url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/confectionary.png") repeat;
+  color: #000000;
+}
+
+.container h2 {
+  margin-top: 50px;
+  font-size: 40px;
+}
+
+.container p {
+  font-size: 25px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+footer {
+  margin-top: 50vh;
+}

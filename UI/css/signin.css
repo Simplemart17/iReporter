@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto|Rubik');
+
+body {
+  background: url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/confectionary.png") repeat;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 85vh;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.signin {
+  background: rgba(107, 101, 101, 0.4);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  padding: 20px;
+}
+
+.signin form {
+  width: 60%;
+  padding-bottom: 20px;
+}
+
+.signin label {
+  font-size: 16px;
+  line-height: 2;
+}
+
+.signin .text-input {
+  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 1.5px;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  line-height: 2;
+}
+
+.signin .signin-btn {
+  width: 100%;
+  font-size: 15px;
+}
+
+.signin .register-btn, .or {
+  width: 60%;
+}
+
+.signin .or {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.signin .or .bar {
+  flex: auto;
+  border: 0;
+  height: 1px;
+  background: #1f1c1c;
+}
+
+.signin .or span {
+  color: #1f1c1c;
+  padding: 5px;
+}
+
+.center {
+  text-align: center;
+}
+
+.signin-btn {
+  padding: 5px 10px;
+  height: 35px;
+  display: block;
+  border: 0;
+  border-radius: 1.5px;
+  background: #2e2e8a;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.signin-btn:hover {
+  background-color: #4955c0;
+  border-color: #4955c0;
+  color: #fff;  
+}
+
+.register-btn {
+  padding: 5px 10px;
+  height: 35px;
+  display: block;
+  border: 1px solid #f4f4f4;
+  border-radius: 1.5px;
+  background: none;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.register-btn:hover {
+  background-color: #ff7b39;
+  border-color: #ff7b39;
+  color: #fff;  
+}
+
+footer {
+  width: 100%;
+  background: #333;
+  padding: 20px;;
+  color: #f4f4f4;
+  font-size: 17px;
+}
+
+@media (min-width: 0px) and (max-width: 680px) {
+  .signin {
+    width: 90%;
+    margin: 5px;
+  }
+  .signin form {
+    width: 100%;
+  }
+
+  .signin .register-btn, .or, .links {
+    width: 100%;
+  }
+  .footer {
+    max-width: 100%;
+  }
+  
+}

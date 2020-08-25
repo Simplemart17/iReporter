@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="iReporter is an information channel for happenings around you"
+    />
+    <meta
+      name="keywords"
+      content="activities, reports, investigation, corruption"
+    />
+    <meta name="author" content="Martins Aloba" />
+    <title>iReporter</title>
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <div class="nav">
+      <div class="nav-center">
+        <div class="nav-header">
+          <div class="nav-title">
+            <a href="index.html"><img src="img/reporter-red.png"/></a>
+          </div>
+        </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span> <span></span> <span></span>
+          </label>
+        </div>
+        <input type="checkbox" id="nav-check" />
+        <div class="nav-links">
+          <a href="admin.html">Admin</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="signin.html">Logout</a>
+        </div>
+      </div>
+    </div>
+    <!-- Colunm Section -->
+    <section class="container">
+      <div class="row">
+        <h1>Dashboard</h1>
+        <div class="column left">
+          <div id="right-box">
+              <div>
+              <button><a href="create.html">Create new</a></button>
+            </div>
+            <div>
+              <button><a href="my_record.html">My Records</a></button>
+            </div>
+          </div>
+        </div>
+        <div class="column middle">
+          <h2>Records</h2>  
+          <article class="container justify">
+            <ul id="grid">
+              <li>
+              <h2 id="title">Dancing Lizard</h2>
+              <div id="status" class="approved"><p>Approved</p></div> 
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Labore inventore eos saepe esse ut? Beatae maiores molestias
+                  corrupti libero fugit... <button id="modalBtn" class="modalBtn">Read full</button></p>
+                  <div id="modalPost" class="modal">
+                      <div class="modal-content">
+                    
+                          <span onclick="document.getElementById('modalPost').style.display='none'" class="closeBtn">&times;</span>
+                <div class="action">
+                  <div id="modify">
+                    <p><a href="edit.html">Modify</a></p>
+                  </div>
+                  <div id="delete"><p>Delete</p></div>
+                </div>
+                          
+                <h2 id="title">Dancing Lizard</h2>
+                    <div id="status" class="approved"><p>Approved</p></div>      
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Labore inventore eos saepe esse ut? Beatae maiores molestias
+                  corrupti libero fugit
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aliquam delectus est quaerat? Necessitatibus ad hic ipsam
+                  exercitationem consequuntur enim nulla libero qui aliquid
+                  nostrum esse molestiae mollitia, at laudantium. Eos eveniet
+                  incidunt praesentium iure at dignissimos ab ipsa quod!
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aliquam delectus est quaerat? Necessitatibus ad hic ipsam
+                  exercitationem consequuntur enim nulla libero qui aliquid
+                  nostrum esse molestiae mollitia, at laudantium. Eos eveniet
+                  incidunt praesentium iure at dignissimos ab ipsa quod!
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aliquam delectus est quaerat? Necessitatibus ad hic ipsam
+                  exercitationem consequuntur enim nulla libero qui aliquid
+                  nostrum esse molestiae mollitia, at laudantium. Eos eveniet
+                  incidunt praesentium iure at dignissimos ab ipsa quod!
+                </p>
+                
+                </div>
+              </div>
+            </li>  
+            </ul>
+          </article>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-bottom center">Copyright &copy; 2018 iReporter</div>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto|Rubik');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size:17px;
+  line-height: 1.5;
+  color: #000000;
+  overflow: auto;
+}
+
+.container {
+  border-radius: 5px;
+  background: rgba(107, 101, 101, 0.4);
+  width: 50%;
+  padding: 0 30px 10px;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin: 0;
+  text-align: center;
+  font-size: 30px;
+}
+
+input[type=text], input[type=email], input {
+  width: 95%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  resize: vertical;
+}
+
+
+
+label {
+  padding: 10px;
+   text-align: left;
+  display: inline-block;
+}
+
+#signup-btn, #cancel-btn {
+  width: 140px;
+  height: 35px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: all 0.3s;
+justify-content: center;
+}
+
+#signup-btn {
+  border-radius: 1.5px;
+  background-color: dodgerblue;
+  
+}
+
+#signup-btn:hover {
+  background-color: steelblue;
+}
+
+#cancel-btn {
+  border-radius: 1.5px;
+  background: #d83737;
+  margin-left: 5%;
+}
+
+#cancel-btn:hover {
+  background-color: #cf9e9e;
+}
+.links a {
+    font-weight: bold;
+    font-size: 16;
+    font-style: italic;
+    
+}
+
+.left {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.right {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.footer {
+  background: #333;
+  text-align: center;
+  font-size: 17px;
+  max-width: 100%;
+  padding-top: 10px;
+  padding: 20px;
+  color: #ffff;
+}
+
+@media screen and (max-width: 600px) {
+  .left, .right {
+      width: 100%;
+      margin-top: 0;
+  }
+  .container {
+    width: 100%;
+  }
+}
+
