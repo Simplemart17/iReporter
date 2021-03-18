@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon ./app/app.js --exec babel-node",
-    "start": "babel-node ./app/app.js",
+    "start:d": "babel-node app.js",
+    "start": "node ./build/app.js",
+    "build": "babel app -d build && cp .env .sequelizerc ./build",
     "db-migrate": "./node_modules/.bin/babel-node ./node_modules/.bin/sequelize db:migrate",
     "db-migrate:undo": "./node_modules/.bin/babel-node ./node_modules/.bin/sequelize db:migrate:undo:all",
     "db-refresh": "npm run db-migrate:undo && npm run db-migrate && npm run db-seed",
@@ -39,7 +41,7 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "mocha": "^8.0.1",
+    "mocha": "^8.1.3",
     "nodemon": "^2.0.4"
   },
   "dependencies": {

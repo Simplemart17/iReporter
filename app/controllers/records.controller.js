@@ -11,6 +11,8 @@ class Records {
   static async createNewRecord(req, res) {
     const { body } = req;
 
+    console.log(body, 'BODY');
+
     // get the logged in user id
     const { decoded: { id } } = req.user;
 
