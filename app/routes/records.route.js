@@ -5,8 +5,6 @@ import Auth from '../middleware/Auth';
 
 const { createNewRecord, getAllRecordByUser, getAllRecordByType } = Records;
 const { verifyToken } = Auth;
-// const { verifyToken, checkIsAdmin } = Auth;
-// const { inputDetails, inputLocation, inputComment } = validation;
 
 const route = Router();
 
@@ -14,6 +12,7 @@ route
   .post(
     '/',
     verifyToken,
+    // validation.inputDetails,
     createNewRecord,
   )
   .get(
