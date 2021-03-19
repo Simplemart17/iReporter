@@ -24,7 +24,6 @@ class Validation {
     }
     if (error.length) {
       error = Object.assign({}, ...error);
-      console.log(error, '>>>>>>>>>>>>>>>>>>>');
       return res.status(400).json({ status: 400, error });
     }
     return next();
